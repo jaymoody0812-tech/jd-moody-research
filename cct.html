@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cascade Compression Theory &mdash; Jacob Moody</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root { --bg: #17161e; --surface: #201f28; --accent: #cc7a52; --text: #e8e6ec; --muted: #908c99; --purple: #8b7aaa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; line-height: 1.8; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  a { color: var(--accent); }
+  .back { display: inline-block; color: var(--muted); font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+  .back:hover { color: var(--accent); }
+  h1 { font-size: 2.2rem; text-align: center; margin: 1rem 0 0.3rem; color: #f0eef4; letter-spacing: 1px; }
+  .subtitle { text-align: center; font-style: italic; color: var(--muted); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .byline { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .prefatory { font-style: italic; color: var(--muted); border-left: 3px solid var(--purple); padding-left: 1rem; margin: 1.5rem 0 2.5rem; }
+  h2 { font-size: 1.4rem; color: var(--purple); margin: 2.5rem 0 1rem; border-bottom: 1px solid #2a2935; padding-bottom: 0.4rem; }
+  h3 { color: var(--accent); font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+  p { margin-bottom: 1.2rem; text-align: justify; }
+  blockquote { border-left: 3px solid var(--accent); padding: 0.4rem 1rem; margin: 1.5rem 0; color: #d8d4e0; font-style: italic; }
+  .claim { background: var(--surface); border-radius: 10px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; border-left: 4px solid var(--accent); }
+  .claim .label { color: var(--accent); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+  .chart-container { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .chart-title { text-align: center; color: var(--accent); font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem; }
+  canvas { max-height: 400px; }
+  .graph-note { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.5rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  th, td { border: 1px solid #2a2935; padding: 0.5rem 0.7rem; text-align: left; }
+  th { color: var(--accent); }
+  td { color: #d8d4e0; }
+  .works-cited { margin-top: 3rem; }
+  .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
+  strong { color: #f0eef4; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="./index.html">&larr; HALO research index</a>
+
+<p class="byline"><strong>Jacob Moody</strong> &mdash; Independent Researcher, HALO</p>
+<p class="byline">Original theoretical framework &middot; filed May 14, 2026</p>
+<h1>Cascade Compression Theory</h1>
+<p class="subtitle">A unified framework for civilizational and individual cascade events</p>
+
+<div class="prefatory">The foundational frameworks engaged here &mdash; Turchin's cliodynamics, Leyden's reinvention cycle, Perez's techno-economic transitions &mdash; are their authors', presented as theirs. The synthesis into a single <em>acceleration-gap</em> mechanism, and the claim that it operates identically at civilizational and individual scale, is my own original contribution. This is a structural reading, not fortune-telling: correct nodes and vectors are defensible; specific dated outcomes are held carefully. No system internals, no clinical data.</div>
+
+<div class="claim">
+  <span class="label">The falsifiable claim</span>
+  CCT predicts that the interval between civilizational cycle-events (crisis, violence peak, reinvention, boom) <strong>compresses</strong> as the acceleration gap widens &mdash; following roughly the same halving pattern observed in technology-integration timelines &mdash; and that the <strong>overload</strong> this produces is itself an independent driver of fracture, separable from the classic structural causes. <strong>If instead</strong> cycle intervals hold constant or lengthen as integration accelerates, or fracture tracks only the classic drivers with no added overload signal, the mechanism is wrong here.
+</div>
+
+<h2>I. The Engine: Stacked Cycles</h2>
+<p>Underneath the daily news is an engine older than any administration. Peter Turchin's cliodynamics finds recurring structural patterns in how social cohesion builds and breaks: a short &ldquo;fathers-and-sons&rdquo; cycle (~50 years; American political-violence peaks near 1870, 1920, 1970, 2020) and a long secular cycle (200&ndash;300 years) driven by <strong>elite overproduction</strong>, widening inequality, and eroding institutional legitimacy. Crucially, Turchin treats these as structural, not partisan &mdash; the disintegrative phase continues regardless of who holds power until the underlying conditions change. His model places the 2020s as a peak-instability window in <em>both</em> cycles at once.</p>
+<p>Carlota Perez supplies the mechanism Turchin implies: every technological revolution runs through a structurally-embedded <em>Turning Point</em> crisis between an Installation phase (creative destruction, displacement) and a Deployment phase (broad adoption). Peter Leyden reads American history as an ~80-year reinvention cycle &mdash; 1785, 1865, 1945, 2025 &mdash; in which acute crisis is the birth canal before a roughly 25-year boom. CCT does not replace any of them. It asks what happens to this engine when technology shortens the intervals between its cycles.</p>
+
+<h2>II. The Mechanism: The Acceleration Gap</h2>
+<p>The core mechanism is the <strong>acceleration gap</strong>: the widening disparity between the velocity of technological change and the adaptive velocity of human institutions, cultures, and individual psychology. The empirical hook is that integration timelines have themselves been collapsing &mdash; each roughly halving the last &mdash; while institutional adaptation speed has not moved. So the gap widens exponentially, not linearly.</p>
+
+<div class="chart-container">
+  <div class="chart-title">Integration timelines are collapsing &mdash; adaptation speed is not</div>
+  <canvas id="integrationChart"></canvas>
+  <p class="graph-note">Approximate years from a general-purpose technology's arrival to mass societal integration. Each surge integrates in ~half the time of the last.</p>
+</div>
+
+<h2>III. Compression: The Cycles Stack Toward Simultaneity</h2>
+<p>The acceleration gap compresses the cyclical intervals. The compression is not uniform &mdash; it follows the same roughly-halving pattern. The result is not that cycles disappear; it is that they <strong>accelerate toward simultaneity</strong>. The installation crisis, the violence peak, the reinvention moment, and the boom &mdash; once separated by decades &mdash; begin to overlap. A society finds itself simultaneously in crisis and reinvention, at peak instability and peak technological potential. That is the core paradox: at the temporal resolution available to human institutions, the conditions that produce collapse and the conditions that produce transformation become indistinguishable.</p>
+
+<div class="chart-container">
+  <div class="chart-title">Each cycle shorter than the last</div>
+  <canvas id="cycleChart"></canvas>
+  <p class="graph-note">Illustrative span of successive civilizational cycles. The trend the theory points at: compression toward shorter, stacked intervals.</p>
+</div>
+
+<h3>Overload as an independent driver</h3>
+<p>When cycles compress toward simultaneity, cognitive and institutional <strong>overload</strong> becomes a driver of fracture in its own right, distinct from the structural causes. People don't riot because they've analyzed elite overproduction; they riot because they experience pervasive destabilization with no adequate explanatory framework. The overload is ontological, not merely informational &mdash; it attacks the basic capacity to locate oneself in a stable social reality. Predictable failure modes follow: scapegoating fills the explanatory vacuum, institutional authority collapses because it visibly can't keep pace, polarization accelerates as shared frameworks fragment, and violence turns expressive rather than instrumental.</p>
+
+<h2>IV. Dual Scale: Nations and Persons, One Mechanism</h2>
+<p>CCT's distinctive claim is that the same compression operates at the <strong>macro</strong> scale (civilizational) and the <strong>micro</strong> scale (individual psychology), and that the two are <em>causally linked</em>, not merely analogous. The individual living inside a compressed-cycle environment shows characteristic patterns &mdash; shortened intervals between stabilization and destabilization, elevated baseline cognitive load, degraded trust in external stability anchors. These are framed not as pathology but as <em>rational responses to an objectively accelerated environment</em>. The design consequence is direct: a support system calibrated to pre-compression intervals (say, weekly contact) is structurally inadequate when the interval between significant state-changes has shortened below it. That is the structural argument for high-frequency, longitudinal monitoring &mdash; stated here as theory, with no system internals.</p>
+
+<h2>V. The Unified Comparison</h2>
+<table>
+<thead><tr><th>Variable</th><th>Turchin</th><th>Leyden</th><th>CCT (compressed)</th></tr></thead>
+<tbody>
+<tr><td>Short cycle</td><td>~50 yrs</td><td>&mdash;</td><td>~20&ndash;25 yrs</td></tr>
+<tr><td>Major cycle</td><td>200&ndash;300 yrs</td><td>80 yrs</td><td>30&ndash;50 yrs</td></tr>
+<tr><td>Boom period</td><td>&mdash;</td><td>25 yrs</td><td>8&ndash;12 yrs</td></tr>
+<tr><td>Primary driver</td><td>Elite overproduction</td><td>Tech transformation</td><td>Acceleration gap</td></tr>
+<tr><td>Endpoint</td><td>Fragmentation or reform</td><td>25-yr boom</td><td>Rapid boom&ndash;bust cycles</td></tr>
+</tbody>
+</table>
+
+<h2>VI. What It Predicts (structural, labeled)</h2>
+<p>The U.S. currently sits at a confluence that, under non-compressed conditions, would be decades apart: Turchin's short violence peak, his secular disintegrative phase, Leyden's pre-reinvention crisis, and Perez's Installation-period crisis &mdash; concurrent. CCT does <em>not</em> predict whether this resolves toward reinvention or fragmentation. It predicts the resolution arrives <strong>faster</strong> than prior frameworks suggest; that adversaries who understand the dynamic will exploit the window; and that designing adaptive systems for compressed-cycle conditions &mdash; high-frequency monitoring, longitudinal data, closed feedback loops &mdash; is the consequential problem of the coming decade. These are vectors, not dated calls. The dated, scored calls live in the cascade reports, where every one is logged against reality &mdash; hits and misses both.</p>
+
+<blockquote>CCT describes not a single crisis but a permanent condition of accelerating oscillation. The adaptive challenge is not to survive a crisis but to build the continuous adaptive capacity that compressed-cycle existence requires.</blockquote>
+
+<div class="works-cited">
+<h2>Works Cited</h2>
+<p>Turchin, P., &amp; Nefedov, S. (2009). <em>Secular Cycles.</em> Princeton University Press.</p>
+<p>Turchin, P. (2016). <em>Ages of Discord.</em> Beresta Books. &middot; Turchin, P. (2023). <em>End Times.</em> Penguin Press.</p>
+<p>Perez, C. (2002). <em>Technological Revolutions and Financial Capital.</em> Edward Elgar.</p>
+<p>Bauman, Z. (2000). <em>Liquid Modernity.</em> Polity. &middot; Rosa, H. (2013). <em>Social Acceleration.</em> Columbia University Press.</p>
+<p>Leyden, P. &mdash; &ldquo;The Great Progression&rdquo; framework. <em>[Verify a single citable source before formal use.]</em></p>
+<p>Moody, J. (2026). <em>Cascade Compression Theory: A Unified Predictive Framework for Civilizational and Individual Cascade Events.</em> Independent research; filed May 14, 2026.</p>
+<p style="color:#6b6776; font-style:italic; text-indent:0; padding-left:0; margin-top:1rem;">The foundational frameworks are their authors'. The acceleration-gap mechanism and the dual-scale synthesis are my own original theoretical contribution. No author is implied to endorse CCT.</p>
+</div>
+
+<div class="footer">
+HALO &mdash; Independent Research &middot; Cascade Compression Theory &middot; theory &amp; method only; engine, data, and clinical material withheld (see DISCLOSURE).
+</div>
+
+</div>
+<script>
+new Chart(document.getElementById('integrationChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Electrification','Computerization','The Internet','Smartphones','AI (projected)'],
+    datasets: [{ label: 'Years to mass integration', data: [40, 20, 10, 5, 2.5],
+      backgroundColor: ['#8b7aaa','#8b7aaa','#9a8a6a','#cc7a52','#cc7a52'], barPercentage: 0.7 }]
+  },
+  options: { indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: 'Each surge integrates in ~half the time of the last', color: '#999' } },
+    scales: { x: { ticks: { color: '#999' }, grid: { color: '#2a2935' }, title: { display: true, text: 'Years (approx.)', color: '#999' } },
+              y: { ticks: { color: '#999' }, grid: { color: '#2a2935' } } }
+  }
+});
+new Chart(document.getElementById('cycleChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Crusades\n(1095-1291)','Renaissance\nto Colonialism','Industrial Rev\nto WWI','Cold War\ncycles','War on Terror\nto now'],
+    datasets: [{ label: 'Cycle duration (years)', data: [196, 250, 130, 45, 25],
+      backgroundColor: ['#8b7aaa','#8b7aaa','#8b7aaa','#cc7a52','#cc7a52'], barPercentage: 0.7 }]
+  },
+  options: { indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: 'Illustrative — successive cycles trend shorter', color: '#999' } },
+    scales: { x: { ticks: { color: '#999' }, grid: { color: '#2a2935' }, title: { display: true, text: 'Years', color: '#999' } },
+              y: { ticks: { color: '#999' }, grid: { color: '#2a2935' } } }
+  }
+});
+</script>
+</body>
+</html>
