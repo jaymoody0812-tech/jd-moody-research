@@ -53,7 +53,7 @@
   <a href="brfss.html" style="color:#cc7a52;margin-right:1rem;text-decoration:none">BRFSS</a>
   <a href="nsduh.html" style="color:#cc7a52;margin-right:1rem;text-decoration:none">NSDUH</a>
   <a href="suicidality.html" style="color:#cc7a52;text-decoration:none">Suicidality</a>
-</nav>
+<a href="framework.html" style="color:#cc7a52;font-weight:bold;text-decoration:none">&#9733; Framework</a></nav>
 <div class="container">
 
 
@@ -127,11 +127,34 @@
   <div class="stat-label">Separation between Profile D (Collapse) len_trend and all other profiles &mdash; +85.3 words/turn vs &le;+2.5. The collapse signature is detectable in AI response behavior before the mood floor is reached.</div>
 </div>
 
+<h3>N=66 Population Simulation &#8212; Canonical Statistics</h3>
+<p>The population simulation (life_agent.py, seed=42, 168 turns, fixed-ledger run 2026-09-29) operationalized the CCT micro-scale claim with three-level confirmation:</p>
+
+<div class="claim">
+  <span class="label">Canonical simulation results (fixed-ledger run 2026-09-29)</span>
+  <strong>(1) Environmental necessity:</strong> chi&sup2;(2) = 32.38, p = 9.32&times;10<sup>&minus;8</sup>, Cram&eacute;r&rsquo;s V = 0.495. BUFFERED 13/22 (59.1%) survived; ADVERSE 0/22; REPLACEMENT 0/22.<br><br>
+  <strong>(2) Phenotype &times; environment (Buffered only):</strong> Stabilizer 10/10 survived; Sentinel 3/12. Fisher exact p = 0.0005.<br><br>
+  <strong>(3) Detection gap:</strong> SENTINEL_COLLAPSE mean peak_Sc = 0.364 vs. STABILIZER_COLLAPSE mean peak_Sc = 0.159; Mann-Whitney U = 700, p = 2.37&times;10<sup>&minus;10</sup>, Cliff&rsquo;s delta = 1.000. <strong>25/53 (47.2%) of all collapses were silent</strong> &#8212; Stabilizer floor with no Sc signal above threshold.
+</div>
+
 <h3>CCT Predicts the Detection Gap</h3>
-<p>The silent collapse rate (47% in Stabilizer profiles) is a direct CCT prediction. Compression produces collapse events that look identical to stability until the moment of floor. The Stabilizer profile, by definition, has low within-day oscillation &mdash; the signal that would normally precede a cascade is absent. The collapse occurs when the baseline erodes rather than when oscillation amplifies. This is the individual-scale equivalent of institutional collapse in CCT: gradual beneath-threshold erosion, then rapid non-linear transition. The monitoring interval required to catch it is shorter than weekly therapy sessions provide.</p>
+<p>The silent collapse rate (25/53; 47.2% in the N=66 simulation) is a direct CCT prediction. Compression produces collapse events that look identical to stability until the moment of floor. The Stabilizer profile, by definition, has low within-day oscillation &#8212; the signal that would normally precede a cascade is absent. The collapse occurs when the baseline erodes rather than when oscillation amplifies. This is the individual-scale equivalent of institutional collapse in CCT: gradual beneath-threshold erosion, then rapid non-linear transition. The monitoring interval required to catch it is shorter than weekly therapy sessions provide.</p>
 
 <h3>CCT Predicts the Adversity Gradient</h3>
-<p>The adversity-to-crisis gradient from BRFSS 2021 ACE data (12.9% &rarr; 42.0% mental health crisis rate, ACE=0 to ACE&ge;3) follows the same exponential shape CCT predicts for civilizational fracture under compounding stressors. The second jump &mdash; 42.0% &rarr; 87.9% for adversity-exposed individuals embedded in amplifying rather than damping co-regulatory environments &mdash; is the replacement co-regulation finding. CCT names this: the direction of the co-regulatory environment determines whether the same compression produces recovery or collapse. Same acceleration; different direction of embedding; opposite outcome.</p>
+<p>The adversity-to-crisis gradient from BRFSS 2021 ACE data (12.9% to 42.0% mental health crisis rate, ACE=0 to ACE&ge;3) follows the same exponential shape CCT predicts for civilizational fracture under compounding stressors. The second jump &#8212; 42.0% to 87.9% for adversity-exposed individuals embedded in amplifying rather than damping co-regulatory environments &#8212; is the replacement co-regulation finding. CCT names this: the direction of the co-regulatory environment determines whether the same compression produces recovery or collapse. Same acceleration; different direction of embedding; opposite outcome.</p>
+
+<h3>CCT Civilizational Test &#8212; Seshat Global History Databank</h3>
+<p>The first empirical test of CCT against the civilizational record was run 2026-09-27 using the Seshat Global History Databank public API (seshat_api v0.1.2; 864 polities, 4,000+ years of coded institutional data). Pre-registered before analysis.</p>
+
+<div class="claim">
+  <span class="label">Seshat civilizational test &#8212; 2026-09-27</span>
+  For each of 169 crisis events in the Seshat crisisdb, a Social Complexity Score (SCS) was computed as the proportion of ten institutional features coded present for that polity. Collapse polities (N=7 with data): mean SCS = 0.275, median = 0.222. No-collapse polities (N=157): mean SCS = 0.653, median = 0.750. <strong>Mann-Whitney U = 204.5, p = 0.0024 (one-tailed), Cohen&rsquo;s d = 1.496.</strong> VERDICT: CONFIRMED. Collapse polities had significantly lower pre-crisis social complexity. Direction matches CCT prediction exactly.
+</div>
+
+<p>The collapse events with the lowest SCS scores were the civilizations most central to CCT&rsquo;s theoretical claims: Tiwanaku (SCS=0.000, collapse 1000 CE), Hohokam (SCS=0.111, 1350 CE), and Cahokia (SCS=0.125, 1200 CE) &#8212; pre-state societies with minimal institutional infrastructure. When environmental and social pressure arrived, there was no buffer layer. Polities with high complexity &#8212; the Eastern Roman Empire (SCS=0.778), the British Empire (SCS=0.889), the Western Han Dynasty (SCS=0.900) &#8212; experienced crises without collapse. Courts absorbed disputes. Roads moved resources. Bureaucrats coordinated response. The institutional buffer held.</p>
+
+<h3>The Replication Across Scales</h3>
+<p>This result replicates the simulation finding at the civilizational level. In the N=66 population simulation, environment predicted collapse with chi&sup2;(2) = 32.38, p = 9.32&times;10<sup>&minus;8</sup>, Cram&eacute;r&rsquo;s V = 0.495. The Seshat test shows the same structural finding across 4,000 years of recorded history. The same mechanism &#8212; buffer present = survival, buffer absent = collapse &#8212; appears to operate at every scale the data can reach: individual trajectories (HALO check-in data), simulated populations (N=66 agent model), and civilizations across the ancient and medieval world (Seshat, N=164 crisis events, 864 polities). Independent replication across three scales and four millennia.</p>
 
 <p>The design implication is stated here as theory: a support system operating at pre-compression contact intervals (weekly therapy, monthly check-ins) is structurally inadequate for a population experiencing compressed-cycle individual cascades. High-frequency, longitudinal, pattern-sensitive monitoring is not a feature enhancement. Under CCT, it is the minimum necessary architecture.</p>
 
@@ -147,7 +170,7 @@
 </div>
 
 <div class="footer">
-AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All arguments, analytical conclusions, and citations are the author&rsquo;s own.
+Authored by Jacob D. Moody. Claude (Anthropic) served as document editor per the author&rsquo;s explicit direction. All theoretical claims, data, and research direction are the author&rsquo;s.
 </div>
 
 </div>

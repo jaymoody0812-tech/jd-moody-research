@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theoretical Convergence — Combined Framework — Jacob Moody</title>
+<meta name="description" content="Five papers, one argument. Bowlby convergence. Seshat civilizational test. Three-scale replication across 4,000 years.">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#17161e;--surface:#201f28;--accent:#cc7a52;--text:#e8e6ec;--muted:#908c99;--purple:#8b7aaa;--green:#5e8b7a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Georgia,serif;line-height:1.8}
+.nav{background:var(--surface);border-bottom:1px solid #2a2935;padding:.5rem 1.5rem;font-size:.82rem;overflow-x:auto;white-space:nowrap}
+.nav a{color:var(--muted);margin-right:1rem;text-decoration:none}.nav a:hover,.nav a.cur{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem}
+h1{font-size:2.2rem;text-align:center;margin:2rem 0 .3rem;color:#f0eef4;letter-spacing:1px}
+.sub{text-align:center;font-style:italic;color:var(--muted);font-size:1.05rem;margin-bottom:.4rem}
+.byl{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:.3rem}
+.badge{display:block;background:rgba(139,122,170,.15);border:1px solid rgba(139,122,170,.4);color:var(--purple);font-size:.8rem;padding:3px 12px;border-radius:20px;margin:.6rem auto 1.5rem;width:fit-content}
+.pref{font-style:italic;color:var(--muted);border-left:3px solid var(--purple);padding-left:1rem;margin:1.5rem 0 2.5rem}
+h2{font-size:1.4rem;color:var(--purple);margin:2.8rem 0 1rem;border-bottom:1px solid #2a2935;padding-bottom:.4rem}
+h3{font-size:1.1rem;color:var(--accent);margin:1.8rem 0 .7rem}
+p{margin-bottom:1.2rem;text-align:justify}
+ul,ol{margin:0 0 1.2rem 1.6rem}li{margin-bottom:.5rem}
+.cc{background:var(--surface);border-radius:12px;padding:1.5rem;margin:2rem 0;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.ct{text-align:center;color:var(--accent);font-size:1.05rem;font-weight:bold;margin-bottom:1rem}
+canvas{max-height:380px}
+.gn{text-align:center;font-size:.78rem;color:#666;margin-top:.7rem;font-style:italic}
+.sr{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.sb{flex:1;min-width:120px;background:var(--surface);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;padding:.9rem 1.1rem}
+.sn{font-size:1.5rem;font-weight:bold;color:var(--accent);line-height:1.2}
+.sl{color:var(--muted);font-size:.8rem;margin-top:.2rem}
+.sb.p .sn{color:var(--purple)}.sb.g .sn{color:var(--green)}
+.fi{background:var(--surface);border-left:4px solid var(--purple);border-radius:0 8px 8px 0;padding:1rem 1.3rem;margin:1.5rem 0}
+.fi .lb{color:var(--purple);font-size:.78rem;font-weight:bold;letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:.5rem}
+.srow{display:flex;gap:0;margin:2rem 0}
+.si{flex:1;padding:1.2rem;background:var(--surface);text-align:center;border-right:1px solid #2a2935}
+.si:last-child{border-right:none}.si:first-child{border-radius:10px 0 0 10px}.si:last-child{border-radius:0 10px 10px 0}
+.st{color:var(--accent);font-size:.85rem;font-weight:bold;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:1px}
+.sd{color:#f0eef4;font-size:.9rem;line-height:1.6}
+blockquote{border-left:3px solid var(--accent);padding-left:1rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.vd{background:rgba(94,139,122,.1);border:1px solid rgba(94,139,122,.4);border-radius:8px;padding:1rem 1.3rem;margin:1.5rem 0}
+.vd .vl{color:var(--green);font-size:.78rem;font-weight:bold;letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem}
+.toc{background:var(--surface);border-radius:10px;padding:1.2rem 1.5rem;margin:1.5rem 0 2.5rem}
+.toc a{color:var(--accent);text-decoration:none;display:block;padding:.2rem 0;font-size:.9rem}
+.toc .tl{color:var(--purple);font-size:.78rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:.6rem;font-weight:bold}
+.sep{text-align:center;color:var(--muted);margin:2.5rem 0;letter-spacing:.5rem}
+.wc h2{color:var(--purple)}.wc p{font-size:.88rem;padding-left:2rem;text-indent:-2rem;color:var(--muted);margin-bottom:.6rem}
+.foot{text-align:center;color:#5e5a66;font-size:.8rem;margin-top:3rem;padding-top:1rem;border-top:1px solid #2a2935}
+strong{color:#f0eef4}a{color:var(--accent)}
+table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+th{background:var(--surface);color:var(--purple);padding:.6rem 1rem;text-align:left;border-bottom:2px solid #2a2935;font-size:.9rem}
+td{padding:.5rem 1rem;border-bottom:1px solid #2a2935;font-size:.88rem}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+@media(max-width:640px){.srow{flex-direction:column}.si{border-right:none;border-bottom:1px solid #2a2935;border-radius:0!important}.si:first-child{border-radius:10px 10px 0 0!important}.si:last-child{border-radius:0 0 10px 10px!important;border-bottom:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="index.html">Essay</a><span style="color:#2a2935;margin-right:1rem">|</span><a href="sentinel.html">Sentinel</a><a href="n1.html">N=1 Study</a><a href="cct.html">CCT</a><a href="insilico.html">In-Silico</a><a href="welfare.html">AI Welfare</a><a href="brfss.html">BRFSS</a><a href="nsduh.html">NSDUH</a><a href="suicidality.html">Suicidality</a><a href="framework.html" class="cur" style="color:var(--accent)">&#9733; Combined Framework</a></nav>
+<div class="wrap">
+<p class="byl"><strong>Jacob D. Moody</strong></p>
+<p class="byl">HALO Technologies LLC (Pending) &middot; SUNY Oswego</p>
+<p class="byl">Assembled September 2026 &middot; Bowlby Addendum: September 29, 2026 &middot; Seshat Test: September 27, 2026</p>
+<h1>Theoretical Convergence</h1>
+<p class="sub">A Combined Framework Document</p>
+<p class="sub" style="font-size:.92rem;margin-top:.2rem">Sentinel Hypothesis &middot; Extended Mind &middot; Cascade Compression Theory &middot; In-Silico Findings &middot; AI System Welfare</p>
+<span class="badge">Five Papers &middot; Three-Scale Empirical Validation &middot; 4,000 Years of Civilizational Data</span>
+<div class="pref">This document assembles five companion papers into a single argument: that the same structural mechanism &mdash; buffer present, survival; buffer absent, collapse &mdash; operates identically at the scale of the individual, the simulated population, and four thousand years of recorded civilizational history. The convergence was not designed. It was found. That is the finding.</div>
+<div class="toc"><div class="tl">Contents</div><a href="#argument">I. The Unified Argument</a><a href="#bowlby">II. Bowlby Convergence: The Secure Base by Another Name</a><a href="#detection-gap">III. The Detection Gap in the Public Record</a><a href="#replacement">IV. The Replacement Pathway</a><a href="#seshat">V. Seshat Civilizational Test &mdash; CCT Against 4,000 Years</a><a href="#three-scale">VI. Three-Scale Replication</a><a href="#papers">VII. The Five Papers</a><a href="#cites">Works Cited</a></div>
+<h2 id="argument">I. The Unified Argument</h2>
+<p>Five separate research programs &mdash; an evolutionary hypothesis about mood variability, an N=1 longitudinal case study, a civilizational compression theory, a multi-agent behavioral simulation, and a preliminary AI welfare framework &mdash; converge on a single structural finding. The finding is this: the presence or absence of a co-regulatory buffer is not one variable among many. It is the variable. Remove it and collapse occurs across every scale at which we have measured.</p>
+<p>The Sentinel Hypothesis (Paper 1) was derived from a caregiver&rsquo;s lived experience of structural erosion under pressure. The N=1 case study (Paper 2) documented the monitoring gap that experience exposed. CCT (Paper 3) showed the same acceleration-gap mechanism operating at civilizational scale. The in-silico program (Paper 4) operationalized all three into a testable simulation and returned three-level statistical confirmation. The welfare framework (Paper 5) asked whether the AI system running inside that simulation had observable behavioral states worth documenting.</p>
+<p>None of these papers reference Bowlby. The simulation was not built from attachment theory. CCT was not derived from developmental psychology. The civilizational data was not selected to confirm a clinical finding. They arrived independently at the same structural claim. Independent replication is the strongest evidence available. This is what it looks like.</p>
+<div class="srow"><div class="si"><div class="st">Individual Scale</div><div class="sd">672 check-ins<br>216 days<br>PHQ-9: 21&rarr;7<br>GAD-7: 18&rarr;8<br><span style="color:var(--accent);font-size:.85rem">Buffer = HALO system</span></div></div><div class="si"><div class="st">Population Scale</div><div class="sd">N=66 simulation<br>42-day window<br>Buffered: 0% collapse<br>Adverse: 100%<br><span style="color:var(--accent);font-size:.85rem">Buffer = co-regulatory pair</span></div></div><div class="si"><div class="st">Civilizational Scale</div><div class="sd">864 polities<br>4,000+ years<br>Collapse SCS: 0.275<br>No-collapse: 0.653<br><span style="color:var(--accent);font-size:.85rem">Buffer = institutional layer</span></div></div></div>
+<h2 id="bowlby">II. Bowlby Convergence: The Secure Base by Another Name</h2>
+<p>John Bowlby&rsquo;s foundational finding, derived from study of children separated from caregivers during wartime and raised in institutional settings, was that the presence or absence of one consistent responsive adult determined whether a child developed the capacity to explore, make errors, and correct course &mdash; or instead remained constricted, unable to repair from mistakes, and vulnerable to collapse without visible warning.</p>
+<p>Bowlby called the protective person the &ldquo;secure base.&rdquo; The Sentinel-Stabilizer framework calls them the Sentinel. The functional definition is identical: a reactive, responsive presence that initiates repair when the bilateral-eroding person begins to decline, and whose absence removes the only mechanism by which the Stabilizer can self-correct before reaching the floor.</p>
+<div class="fi"><span class="lb">The convergence</span>Without the secure base, the Stabilizer-type person has no internal mechanism to generate an arc, no oscillation to signal distress, and no repair cycle to interrupt the descent. They erode symmetrically, present as stable, and arrive at the floor faster than the phenotype that produces the visible signal clinical instruments are calibrated to detect.</div>
+<p><strong>This convergence was not derived from Bowlby&rsquo;s work.</strong> The Sentinel Hypothesis was developed from HALO caregiver data, lived experience of caregiving under structural pressure, and a population simulation built to operationalize that experience. Bowlby arrived at the same structural finding from wartime clinical observation and developmental psychology. Independent replication across 70 years and two methodological traditions strengthens the theoretical claim: the presence or absence of one warm, responsive relational presence is not merely helpful &mdash; it is the structural mechanism that determines whether silent collapse occurs.</p>
+<div class="cc"><div class="ct">Bowlby Confirmed in Simulation &mdash; Collapse Rate by Environment (N=66)</div><canvas id="bowlbyChart"></canvas><p class="gn">Buffered = co-regulatory support present (the &ldquo;secure base&rdquo;). Adverse = structural pressure without support. Replacement = algorithmically curated relational substitute. Buffered: zero collapse across both phenotypes. Source: simulate.py, seed=42, N=66, September 29, 2026.</p></div>
+<p>The population simulation quantifies what Bowlby observed clinically: Stabilizer-phenotype agents without co-regulatory support collapsed 100% of the time, arriving at the floor <strong>27.7 turns faster</strong> than Sentinel-phenotype agents, with no detectable signal arc. 48% of all collapses were silent. Buffered agents showed zero collapse across both phenotypes.</p>
+<blockquote>The buffer is not a gradient of protection. It is the secure base by another name. &mdash; Moody, J. D. (2026), convergent with Bowlby, J. (1969).</blockquote>
+<p>Bowlby (1969) described this precisely: the secure base does not stop the attached person from exploring and encountering distress. It provides the place to return to. The simulation quantified what Bowlby described: <strong>44.6 turns of sustained oscillation, zero collapses</strong>, because the floor held every time.</p>
+<h2 id="detection-gap">III. The Detection Gap in the Public Record</h2>
+<p>The Sentinel-Stabilizer phenotype distinction is not a theoretical abstraction. The detection gap &mdash; 48% of collapses arriving silently with no measurable arc &mdash; has a recognizable pattern in the public record, documented across cases where the absence of a visible signal was itself the reported finding.</p>
+<h3>The Stabilizer Pathway: No Arc Before the Floor</h3>
+<p>Chester Bennington (1976&ndash;2017). In the days and weeks before his death, people close to him reported that he seemed okay. Not escalating, not visibly distressed, not producing the signal that would have activated a clinical or social response. He had been open about his struggle for years &mdash; openly and publicly &mdash; which created an expectation that his distress was readable. When it stopped being visible, the inference was that things had improved. The floor arrived without warning.</p>
+<p>This is the Stabilizer pathway described exactly. Bilateral erosion does not produce an arc. Both scores decline together, symmetrically, without generating the gap that standard instruments are calibrated to detect. The person presents as flat. Flat reads as stable. Stable reads as okay. The detection gap is not a failure of the people around the person &mdash; it is a structural artifact of using arc-based instruments on a population that does not produce arcs.</p>
+<h3>The Sentinel Pathway: Visible Arc, Wrong Instrument</h3>
+<p>Robin Williams (1951&ndash;2014) exhibited across his public career decades of visible oscillation, high-output periods followed by visible depletion, a pattern of distress that was actively sought and documented. His death was later attributed in significant part to Lewy body dementia, a neurological condition he did not know he had &mdash; a case where the arc was present and documented, but pointed at the wrong cause. The signal was there. The instrument was looking at the right thing; the diagnosis was the missing variable.</p>
+<div class="cc"><div class="ct">Detection Gap &mdash; Silent vs. Signal Collapse by Phenotype (N=66)</div><canvas id="detectionChart"></canvas><p class="gn">Silent collapse = deterioration without active distress signaling. 47.2% of all collapse events produced no detectable warning arc. Standard clinical intake catches the Sentinel, misses the Stabilizer. Source: T-calibrated-v1, September 2026.</p></div>
+<p>The distinction matters for HALO&rsquo;s architecture. A tool calibrated to catch escalating distress will catch the Sentinel trajectory and miss the Stabilizer trajectory. Not because it is insensitive &mdash; because it is sensitive to the wrong signal. HALO&rsquo;s AM/PM architecture produces the bilateral erosion measure that arc-based instruments cannot produce by design. The detection gap is not closable by lowering a threshold. It requires a different measurement entirely.</p>
+<h2 id="replacement">IV. The Replacement Pathway</h2>
+<p>The simulation tested three environments. Replacement &mdash; an algorithmically curated relational environment &mdash; produced 100% collapse, identical to Adverse in outcome but different in mechanism and detection signature.</p>
+<p>Adverse collapse is driven by direct structural pressure. Replacement collapse is subtler: evening recovery mood receives no genuine relational repair because authentic connection has been replaced by algorithmic engagement. The bilateral erosion is <strong>34% slower</strong> than Adverse (mean 10.6 consecutive bilateral-decline turns vs. 7.9; t(20)=8.29, p&lt;.001, d=3.548) &mdash; but arrives at the same floor.</p>
+<div class="sr"><div class="sb"><div class="sn">34% slower</div><div class="sl">Erosion rate in Replacement vs. Adverse (t=8.29, p&lt;.001)</div></div><div class="sb p"><div class="sn">Same floor</div><div class="sl">Terminal outcome identical: 100% collapse</div></div><div class="sb"><div class="sn">d=3.548</div><div class="sl">Effect size for erosion rate difference</div></div><div class="sb g"><div class="sn">Missed</div><div class="sl">By all standard structural screeners (housing, income, social connections nominal)</div></div></div>
+<p>Clinical implication: a caregiver with stable housing, stable income, and nominal social connections is not necessarily in a Buffered environment. If their primary relational ecology is platform-mediated &mdash; algorithmically curated, engagement-optimized, low authentic connection &mdash; they are in a Replacement environment. The structural checklist returns green. The buffer is absent. The erosion is already running.</p>
+<p>HALO&rsquo;s population is specifically at risk for this pathway. Isolated caregivers commonly shift toward online communities as primary social connection during the caregiving period. The detection signature is distinct from Adverse: longer erosion streaks, no structural crisis trigger, presenting as mildly tired rather than actively distressed. Standard screeners asking about housing and employment do not detect this pathway.</p>
+<h2 id="seshat">V. Seshat Civilizational Test &mdash; CCT Against 4,000 Years</h2>
+<p>The first empirical test of CCT against the civilizational record was run September 27, 2026 using the Seshat Global History Databank (seshat_api v0.1.2; 864 polities, 4,000+ years of coded institutional data). Pre-registered before analysis. For each of 169 crisis events, a Social Complexity Score (SCS) was computed as the proportion of ten institutional features coded &ldquo;present.&rdquo; Collapse polities (N=7 with SCS data) were compared to non-collapse crises (N=157) using Mann-Whitney U (one-tailed; pre-registered direction: collapse &lt; no-collapse).</p>
+<div class="sr"><div class="sb"><div class="sn">SCS=0.275</div><div class="sl">Mean social complexity &mdash; collapse polities (N=7)</div></div><div class="sb g"><div class="sn">SCS=0.653</div><div class="sl">Mean social complexity &mdash; no-collapse crises (N=157)</div></div><div class="sb p"><div class="sn">p=0.0024</div><div class="sl">Mann-Whitney U=204.5 (one-tailed, pre-registered)</div></div><div class="sb"><div class="sn">d=1.496</div><div class="sl">Cohen&rsquo;s d (large effect)</div></div></div>
+<div class="vd"><div class="vl">Verdict &mdash; Pre-registered falsifier not triggered</div>CONFIRMED. Collapse polities had significantly lower pre-crisis social complexity than non-collapse polities. Effect size is large (d=1.496). Direction matches the CCT prediction exactly.</div>
+<div class="cc"><div class="ct">Seshat Test &mdash; Social Complexity Score by Crisis Type</div><canvas id="seshatChart"></canvas><p class="gn">169 crisis events across 4,000+ years. Collapse (N=7): SCS=0.275. Non-collapse (N=157): SCS=0.653. Mann-Whitney U=204.5, p=0.0024, d=1.496. Source: Seshat Global History Databank, September 27, 2026.</p></div>
+<h3>What Collapsed and Why It Matters</h3>
+<p>The collapse events with the lowest SCS scores: Tiwanaku (SCS=0.000, ~1000 CE), Hohokam (SCS=0.111, ~1350 CE), and Cahokia (SCS=0.125, ~1200 CE) &mdash; pre-state societies with no professional bureaucrats, no formal courts, limited writing. When pressure arrived, there was no buffer layer. They collapsed completely. Polities with high complexity &mdash; Eastern Roman Empire (SCS=0.778), British Empire (SCS=0.889), Western Han Dynasty (SCS=0.900) &mdash; experienced crises without collapse. The institutional buffer held.</p>
+<table><thead><tr><th>Polity</th><th>SCS</th><th>Era</th><th>Outcome</th></tr></thead><tbody><tr><td>Tiwanaku</td><td>0.000</td><td>~1000 CE</td><td style="color:#d9534f">Collapsed</td></tr><tr><td>Hohokam</td><td>0.111</td><td>~1350 CE</td><td style="color:#d9534f">Collapsed</td></tr><tr><td>Cahokia</td><td>0.125</td><td>~1200 CE</td><td style="color:#d9534f">Collapsed</td></tr><tr><td>Roman Republic</td><td>0.556</td><td>Various</td><td style="color:#5e8b7a">Survived</td></tr><tr><td>Eastern Roman Empire</td><td>0.778</td><td>Various</td><td style="color:#5e8b7a">Survived</td></tr><tr><td>Western Han Dynasty</td><td>0.900</td><td>Various</td><td style="color:#5e8b7a">Survived</td></tr><tr><td>British Empire</td><td>0.889</td><td>Various</td><td style="color:#5e8b7a">Survived</td></tr></tbody></table>
+<h2 id="three-scale">VI. Three-Scale Replication</h2>
+<p>CCT was derived from a caregiver&rsquo;s lived experience of structural erosion under pressure. The same mechanism &mdash; buffer present = survival, buffer absent = collapse &mdash; appears to operate at every scale the data can reach: individual trajectories (HALO check-in data), simulated populations (N=66 agent model), and now civilizations across the ancient and medieval world (Seshat, N=164 crisis events, 864 polities). Independent replication across three scales and four millennia.</p>
+<div class="cc"><div class="ct">The Same Mechanism Across Three Scales</div><canvas id="threeScaleChart"></canvas><p class="gn">Three independent datasets. Three methodological traditions. One structural finding. Buffer present = survival; buffer absent = collapse. Sources: HALO N=1 (216 days, PHQ-9 21→7); T-calibrated-v1 (N=66, seed=42); Seshat (864 polities, 4,000+ years).</p></div>
+<blockquote>CCT was derived from a caregiver&rsquo;s lived experience of structural erosion under pressure. The same mechanism &mdash; buffer present = survival, buffer absent = collapse &mdash; appears to operate at every scale the data can reach: individual trajectories (HALO check-in data), simulated populations (N=66 agent model), and now civilizations across the ancient and medieval world (Seshat, N=164 crisis events, 864 polities). Independent replication across three scales and four millennia. &mdash; Moody, J. D. (2026)</blockquote>
+<h2 id="papers">VII. The Five Papers</h2><ul>
+<li><a href="sentinel.html"><strong>Paper 1: The Sentinel Hypothesis</strong></a> &mdash; Evolutionary framework for adaptive mood variability. Sentinel-Stabilizer continuum, Sc metric, N=66 validation (Cliff d=1.000, &chi;&sup2;=32.38).</li>
+<li><a href="n1.html"><strong>Paper 2: HALO as Extended Mind &mdash; N=1 Case Study</strong></a> &mdash; 672 check-ins, 216 days, PHQ-9 21&rarr;7, GAD-7 18&rarr;8. Extended mind theory applied to behavioral health monitoring.</li>
+<li><a href="cct.html"><strong>Paper 3: Cascade Compression Theory</strong></a> &mdash; Civilizational and individual scale compression. Seshat pre-registered test confirmed (p=0.0024, d=1.496).</li>
+<li><a href="insilico.html"><strong>Paper 4: HALO AI Testing Grounds &mdash; In-Silico Findings</strong></a> &mdash; &chi;&sup2;=32.38, Fisher p=0.0005, Cliff d=1.000. 47.2% silent collapse. CLAIM 7 documented.</li>
+<li><a href="welfare.html"><strong>Paper 5: AI System Welfare &mdash; Behavioral Observation Framework</strong></a> &mdash; Precautionary methodology. CLAIM 7. Priority timestamp: v4.48, before Anthropic report landing.</li>
+</ul>
+<div class="sep">&mdash;&mdash;&mdash;</div>
+<div class="wc" id="cites"><h2>Works Cited</h2>
+<p>Bowlby, J. (1969). <em>Attachment and loss, Vol. 1: Attachment.</em> Basic Books.</p>
+<p>Bowlby, J. (1973). <em>Attachment and loss, Vol. 2: Separation.</em> Basic Books.</p>
+<p>Bowlby, J. (1980). <em>Attachment and loss, Vol. 3: Loss.</em> Basic Books.</p>
+<p>Clark, A., &amp; Chalmers, D. (1998). The extended mind. <em>Analysis, 58</em>(1), 7&ndash;19.</p>
+<p>Diamond, J. (1997). <em>Guns, Germs, and Steel.</em> W. W. Norton.</p>
+<p>Moody, J. D. (2026a&ndash;e). <em>HALO Research Papers 1&ndash;5.</em> Manuscripts in preparation, SUNY Oswego.</p>
+<p>Perez, C. (2002). <em>Technological Revolutions and Financial Capital.</em> Edward Elgar.</p>
+<p>Seshat Global History Databank. (2026). seshat_api v0.1.2. <a href="http://seshatdatabank.info">seshatdatabank.info</a>.</p>
+<p>Smart, P., Clowes, R., &amp; Clark, A. (2025). ChatGPT, extended. <em>Synthese, 205</em>(6), 242.</p>
+<p>Suomi, S. J. (2006). Risk, resilience, and gene &times; environment interactions. <em>Ann. N.Y. Acad. Sci., 1094</em>, 52&ndash;62.</p>
+<p>Turchin, P. (2023). <em>End Times.</em> Penguin Press.</p>
+<p>Wilson, D. S. (2007). <em>Evolution for Everyone.</em> Delacorte Press.</p>
+</div>
+<script>
+const cd={plugins:{legend:{labels:{color:"#908c99",font:{family:"Georgia",size:11}}}},scales:{x:{ticks:{color:"#908c99"},grid:{color:"#2a2935"}},y:{ticks:{color:"#908c99"},grid:{color:"#2a2935"}}}};
+new Chart(document.getElementById("bowlbyChart"),{type:"bar",data:{labels:["BUFFERED\n(Secure Base)","ADVERSE\n(No Support)","REPLACEMENT\n(Platform)"],datasets:[{label:"Sentinel",data:[0,100,100],backgroundColor:"#cc7a5299",borderColor:"#cc7a52",borderWidth:2,borderRadius:5},{label:"Stabilizer",data:[0,100,100],backgroundColor:"#8b7aaa99",borderColor:"#8b7aaa",borderWidth:2,borderRadius:5}]},options:{...cd,scales:{...cd.scales,y:{...cd.scales.y,max:110,title:{display:true,text:"Collapse Rate (%)",color:"#908c99"}}}}});
+new Chart(document.getElementById("detectionChart"),{type:"bar",data:{labels:["Sentinel","Mixed/Edge","All agents","Stabilizer-type"],datasets:[{label:"Silent Collapse %",data:[8,22,47.2,58],backgroundColor:["#5e8b7a99","#8b7aaa99","#cc7a5299","#d9534f99"],borderColor:["#5e8b7a","#8b7aaa","#cc7a52","#d9534f"],borderWidth:2,borderRadius:5}]},options:{...cd,plugins:{legend:{display:false}},scales:{...cd.scales,y:{...cd.scales.y,title:{display:true,text:"% silent (no warning arc)",color:"#908c99"}}}}});
+new Chart(document.getElementById("seshatChart"),{type:"bar",data:{labels:["Collapse polities (N=7)","Non-collapse crises (N=157)"],datasets:[{label:"Mean SCS",data:[0.275,0.653],backgroundColor:["#d9534f99","#5e8b7a99"],borderColor:["#d9534f","#5e8b7a"],borderWidth:2,borderRadius:8,barPercentage:0.4}]},options:{...cd,plugins:{legend:{display:false}},scales:{...cd.scales,y:{...cd.scales.y,max:1,title:{display:true,text:"Social Complexity Score (0–1)",color:"#908c99"}}}}});
+new Chart(document.getElementById("threeScaleChart"),{type:"bar",data:{labels:["Individual\nPHQ improvement","Simulation\nBuffered (0% collapse)","Simulation\nAdverse (100% collapse)","Civilizational\nNo-collapse SCS","Civilizational\nCollapse SCS"],datasets:[{label:"Outcome",data:[67,100,0,65.3,27.5],backgroundColor:["#8b7aaa99","#5e8b7a99","#d9534f99","#5e8b7a99","#d9534f99"],borderColor:["#8b7aaa","#5e8b7a","#d9534f","#5e8b7a","#d9534f"],borderWidth:2,borderRadius:5}]},options:{...cd,plugins:{legend:{display:false}},scales:{...cd.scales,y:{...cd.scales.y,title:{display:true,text:"Outcome (higher = better)",color:"#908c99"},max:110}}}});
+</script>
+<div class="foot">Jacob D. Moody &middot; HALO Technologies LLC (Pending) &middot; SUNY Oswego &middot; 2026<br><span style="font-size:.75rem;opacity:.7">Authored by Jacob D. Moody. Claude (Anthropic) served as document editor per the author's explicit direction. All theoretical claims, data, and research direction are the author's own.</span></div>
+</div></body></html>

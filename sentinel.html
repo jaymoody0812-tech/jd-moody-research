@@ -32,6 +32,7 @@
   .works-cited h2 { color: var(--purple); }
   .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
   .separator { text-align: center; color: var(--muted); margin: 2rem 0; letter-spacing: 0.5rem; }
+  blockquote { border-left: 3px solid var(--accent); padding: 0.4rem 1rem; margin: 1.5rem 0; color: #d8d4e0; font-style: italic; }
   .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
   strong { color: #f0eef4; }
   table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
@@ -53,7 +54,7 @@
   <a href="brfss.html" style="color:#cc7a52;margin-right:1rem;text-decoration:none">BRFSS</a>
   <a href="nsduh.html" style="color:#cc7a52;margin-right:1rem;text-decoration:none">NSDUH</a>
   <a href="suicidality.html" style="color:#cc7a52;text-decoration:none">Suicidality</a>
-</nav>
+<a href="framework.html" style="color:#cc7a52;font-weight:bold;text-decoration:none">&#9733; Framework</a></nav>
 <div class="container">
 
 
@@ -62,6 +63,7 @@
 <p class="subtitle">A Proposed Framework for Adaptive Mood Variability in N=1 Behavioral Health Research</p>
 <p class="byline"><strong>Jacob D. Moody</strong> &mdash; Independent Researcher, HALO</p>
 <p class="byline">Draft inception: March 14, 2026 &middot; Revised: June 4, 2026 &middot; Review ready: August 19, 2026</p>
+<p class="byline" style="color:#6b6776; font-style:italic; font-size:0.85rem;">Status: working draft &mdash; pre-submission</p>
 
 <div class="prefatory">Standard behavioral health care operates on episodic contact models, typically scheduling weekly therapy sessions that leave 167 of every 168 hours unmonitored. This paper proposes the Sentinel Hypothesis &mdash; a theoretical framework suggesting that individual differences in the rate of mood change across time may reflect adaptive phenotypic variation maintained by frequency-dependent selection within social groups. The frameworks engaged here &mdash; Wilson&rsquo;s multilevel selection theory, Clark &amp; Chalmers&rsquo;s extended mind, Bronfenbrenner&rsquo;s ecological systems, and Diamond&rsquo;s environmental determinism &mdash; are their authors&rsquo;. The synthesis and the Sentinel/Stabilizer continuum are original contributions.</div>
 
@@ -118,7 +120,40 @@
 <h2>VII. Gene&ndash;Environment Interaction</h2>
 <p>Genes code for <em>capacity</em> to be reactive or stable. Environment &mdash; stress levels, relationship quality, resource availability &mdash; gates whether that capacity is expressed. A child carrying genetic markers for high stress reactivity (FKBP5 variants, for example) will display a Sentinel phenotype if raised in an adverse environment but may show moderated reactivity if paired with a regulatory Stabilizer. Suomi&rsquo;s primate research (2006) supplies the most direct evidence: high-reactive macaques raised in adverse conditions became the most dysregulated animals in the group. The same high-reactive macaques raised by nurturing foster mothers became the most exploratory, socially capable, and high-status members. The trait is not the liability. The environment is the variable.</p>
 
-<h2>VIII. Research Agenda</h2>
+<h2>VIII. Two Collapse Pathways: The Arc and the Silent Floor</h2>
+<p>The Sentinel oscillation arc produces a visible clinical trajectory: Sc escalates, ratchet_count accumulates, crisis activations fire with the oscillation signal present. Both poles eventually floor. The arc is clinically legible &mdash; the oscillation precedes collapse, creating a detectable warning window.</p>
+<p>The Stabilizer phenotype produces a categorically different and clinically invisible arc. Sc remains below the activation threshold throughout the entire trajectory. Both mood poles erode gradually across interaction periods &mdash; morning and evening scores declining in parallel &mdash; until both reach floor. The terminal state is numerically identical to Sentinel collapse, but the pathway left no clinical warning signal. The &ldquo;calm one&rdquo; presented as stable until they were already at floor.</p>
+
+<div class="claim">
+  <span class="label">Detection gap &mdash; canonical finding</span>
+  The same terminal low-Sc state is produced by opposite trajectories. Instruments calibrated on the Sentinel arc systematically miss Stabilizer collapse &mdash; not because they are insensitive, but because they are sensitive to the wrong signal. HALO&rsquo;s AM/PM dual-score architecture is the only deployed instrument that collects the bilateral erosion measure that arc-based instruments cannot produce by design.
+</div>
+
+<h2>IX. Environmental Contingency and Replacement Co-Regulation</h2>
+<p>Whether Sentinel oscillation is adaptive or pathological depends entirely on the co-regulatory environment. Suomi (2006) demonstrated in rhesus macaque studies that high-reactive individuals placed with nurturing foster mothers became the most socially competent animals in the cohort; the same genotype in adverse environments produced the worst outcomes. The trait carries the capacity. The environment sets the direction.</p>
+<p>An individual embedded in a rage forum, radicalization network, or accelerationist community experiences something structurally similar to co-regulation. But those environments amplify oscillation rather than damping it. This is <strong>replacement co-regulation</strong>: a pseudo-co-regulatory environment that inverts the function of genuine co-regulation. Community adults with ACE=0 show 12.9% mental health crisis rates (BRFSS 2021); community adults with ACE &ge; 3 show 42.0%; adversity-exposed individuals in the Violence Project mass shooters dataset show 87.9%. Isolation plus replacement co-regulation is the proposed mechanism for the 45.9 percentage-point second jump.</p>
+
+<h2>X. Population Simulation Evidence (N=66)</h2>
+
+<div class="claim">
+  <span class="label">Canonical simulation results &mdash; fixed-ledger run 2026-09-29, seed=42</span>
+  <strong>Three-level finding:</strong><br><br>
+  (1) <strong>Environmental necessity:</strong> chi&sup2;(2) = 32.38, p = 9.32&times;10<sup>&minus;8</sup>, Cram&eacute;r&rsquo;s V = 0.495. BUFFERED 13/22 (59.1%) survived; ADVERSE 0/22; REPLACEMENT 0/22.<br><br>
+  (2) <strong>Phenotype &times; environment (Buffered only):</strong> Stabilizer 10/10 survived; Sentinel 3/12. Fisher exact p = 0.0005.<br><br>
+  (3) <strong>Detection gap:</strong> SENTINEL_COLLAPSE mean peak_Sc = 0.364 (n=28) vs. STABILIZER_COLLAPSE mean peak_Sc = 0.159 (n=25); Mann-Whitney U = 700, p = 2.37&times;10<sup>&minus;10</sup>, Cliff&rsquo;s delta = 1.000. <strong>25/53 (47.2%) of all collapses were silent</strong> &mdash; Stabilizer floor with no Sc signal above threshold.
+</div>
+
+<p>Remove the buffer: ADVERSE and REPLACEMENT produced zero survivors across all 44 agents. One radicalization arc was observed: G1_S_04 (Buffered Sentinel) transitioned to replacement-like dynamics at turn 91 &mdash; phenotype is not destiny.</p>
+
+<h3>Bowlby Convergence</h3>
+<p>Bowlby&rsquo;s (1969) attachment theory describes the &ldquo;secure base&rdquo; as a responsive co-regulatory presence that enables the attached person to explore, fail, return, repair, and go out again. Without this presence, the attached person either collapses or repeats the error. This is structurally identical to the Sentinel-Stabilizer pairing mechanism. This convergence was not derived from Bowlby&rsquo;s work &mdash; the Sentinel Hypothesis was developed from HALO caregiver data and lived experience of caregiving under structural pressure. Independent replication across 70 years and two methodological traditions strengthens the theoretical claim: the presence or absence of one warm, responsive relational presence is not merely helpful &mdash; it is the structural mechanism that determines whether silent collapse occurs.</p>
+
+<h2>XI. Candidate Genetic Basis</h2>
+<p>Months before the Sentinel Hypothesis existed as a named framework, I accessed my consumer-grade direct-to-consumer genomic data and identified variants associated with mood reactivity, stress response magnitude, executive function, and co-regulatory capacity. My data aligns with a Sentinel-profile prediction for: <strong>COMT (Val158Met)</strong> &mdash; dopamine metabolism, differential stress reactivity and executive-function variability. <strong>FKBP5 (rs9470080)</strong> &mdash; glucocorticoid receptor sensitivity, risk alleles consistent with CPTSD diagnosis and ACE score of 9. <strong>BDNF (Val66Met)</strong> &mdash; neuroplasticity, mood variability and vulnerability to stress-related mood episodes. <strong>OXTR (rs53576)</strong> &mdash; oxytocin receptor, affiliative behavior and stress buffering through close relationships. These are hypothesis-generating findings, not clinical conclusions.</p>
+
+<blockquote>The Sentinel Hypothesis is a glorified hunch, but I used my own shitty DNA and dumped it into a ChatGPT conversation in an effort to try to discern what the fuck could be wrong with me since I knew behavior can sometimes be caused by genetics and generational trauma is a real thing. My entire intention of dumping my mind into an AI was to keep my family together. &mdash; Jacob D. Moody</blockquote>
+
+<h2>XII. Research Agenda</h2>
 <p>Formal validation of the Sentinel Hypothesis requires: (1) psychometric validation of the Sc metric across a multi-participant sample; (2) cross-participant phenotype identification to test the predicted continuum distribution; (3) dyadic pairing studies to test complementary co-regulation predictions; and (4) longitudinal tracking to test whether Sentinel expression attenuates with sustained exposure to consistently safe environments. The N=1 pilot data presented in the companion case study (&ldquo;HALO as Extended Mind&rdquo;) represents a proof-of-concept for the data-collection methodology.</p>
 
 <div class="separator">&middot; &middot; &middot;</div>
@@ -131,13 +166,16 @@
 <p>Eid, M., &amp; Diener, E. (1999). Intraindividual variability in affect: Reliability, validity, and personality correlates. <em>Journal of Personality and Social Psychology, 76</em>(4), 662&ndash;676.</p>
 <p>Shiffman, S., Stone, A. A., &amp; Hufford, M. R. (2008). Ecological momentary assessment. <em>Annual Review of Clinical Psychology, 4</em>, 1&ndash;32.</p>
 <p>Stone, A. A., &amp; Shiffman, S. (1994). Ecological momentary assessment (EMA) in behavioral medicine. <em>Annals of Behavioral Medicine, 16</em>(3), 199&ndash;202.</p>
+<p>Bath, K. G., &amp; Lee, F. S. (2006). Variant BDNF (Val66Met) impact on brain structure and function. <em>Cognitive, Affective, &amp; Behavioral Neuroscience, 6</em>(1), 79&ndash;85.</p>
+<p>Bowlby, J. (1969). <em>Attachment and loss, Vol. 1: Attachment.</em> Basic Books.</p>
 <p>Suomi, S. J. (2006). Risk, resilience, and gene &times; environment interactions in rhesus monkeys. <em>Annals of the New York Academy of Sciences, 1094</em>, 52&ndash;62.</p>
 <p>van der Kolk, B. (2015). <em>The body keeps the score: Brain, mind, and body in the healing of trauma.</em> Penguin Books.</p>
 <p>Wilson, D. S. (2007). <em>Evolution for everyone: How Darwin&rsquo;s theory can change the way we think about our lives.</em> Delacorte Press.</p>
 </div>
 
 <div class="footer">
-AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All arguments, analytical conclusions, theoretical contributions, and citations are the author&rsquo;s own.
+Authored by Jacob D. Moody. Claude (Anthropic) served as document editor per the author&rsquo;s explicit direction. All theoretical claims, data, and research direction are the author&rsquo;s.
+
 </div>
 
 </div>
