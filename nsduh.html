@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health Expansion Analysis, Oswego &mdash; NSDUH 2024 &mdash; Jacob Moody</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root { --bg: #17161e; --surface: #201f28; --accent: #cc7a52; --text: #e8e6ec; --muted: #908c99; --purple: #8b7aaa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; line-height: 1.8; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  a { color: var(--accent); }
+  .back { display: inline-block; color: var(--muted); font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+  .back:hover { color: var(--accent); }
+  h1 { font-size: 2.2rem; text-align: center; margin: 2rem 0 0.3rem; color: #f0eef4; letter-spacing: 1px; }
+  .subtitle { text-align: center; font-style: italic; color: var(--muted); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .byline { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .prefatory { font-style: italic; color: var(--muted); border-left: 3px solid var(--purple); padding-left: 1rem; margin: 1.5rem 0 2.5rem; }
+  h2 { font-size: 1.4rem; color: var(--purple); margin: 2.5rem 0 1rem; border-bottom: 1px solid #2a2935; padding-bottom: 0.4rem; }
+  h3 { color: var(--accent); font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+  p { margin-bottom: 1.2rem; text-align: justify; }
+  .chart-container { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .chart-title { text-align: center; color: var(--accent); font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem; }
+  canvas { max-height: 400px; }
+  .stat-block { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; }
+  .stat-block .stat-num { font-size: 2rem; font-weight: bold; color: var(--accent); }
+  .stat-block .stat-label { color: var(--muted); font-size: 0.9rem; }
+  .notice { background: var(--surface); border: 1px solid #3a3845; border-radius: 8px; padding: 1rem 1.4rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--muted); }
+  .works-cited { margin-top: 3rem; }
+  .works-cited h2 { color: var(--purple); }
+  .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .separator { text-align: center; color: var(--muted); margin: 2rem 0; letter-spacing: 0.5rem; }
+  .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
+  strong { color: #f0eef4; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  th { background: var(--surface); color: var(--purple); padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #2a2935; }
+  td { padding: 0.5rem 1rem; border-bottom: 1px solid #2a2935; color: var(--text); font-size: 0.9rem; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .graph-note { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.5rem; }
+  .methods-note { font-size: 0.85rem; color: var(--muted); background: rgba(0,0,0,0.2); border-radius: 6px; padding: 0.8rem 1rem; margin: 1.5rem 0; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="./index.html">&larr; HALO research index</a>
+
+<h1>Mental Health Expansion Analysis</h1>
+<p class="subtitle">NSDUH 2024 &mdash; Oswego County Estimates: ADHD, Veterans, Memory, PTSD Proxy</p>
+<p class="byline"><strong>Jacob D. Moody</strong> &mdash; Independent Researcher, HALO</p>
+<p class="byline">Generated: October 5, 2026 &middot; Source: NSDUH 2024 Public Use File (N=47,299 adults 18+)</p>
+
+<div class="prefatory">This analysis uses the 2024 National Survey on Drug Use and Health (NSDUH) to estimate prevalence of ADHD, veteran mental health burden, serious psychological distress (PTSD proxy), and memory difficulty among Oswego County adults. National rates are applied to Oswego via age-sex direct standardization using ACS 2019&ndash;2023 population cells. The analysis specifically targets the population HALO is designed to serve: individuals whose vocabulary capacity does not match their internal experience, and who are therefore systematically underserved by articulation-dependent clinical intake processes.</div>
+
+<div class="notice">
+<strong>Critical limitations (stated explicitly):</strong> No state FIPS identifiers in NSDUH 2024 public-use file &mdash; all rates are national; NY-specific rates unavailable. No PTSD module in NSDUH 2024 &mdash; Serious Psychological Distress (SPD; K6 &ge; 13) and Serious Mental Illness (SMI) serve as trauma-related burden proxies. ADHD figure (addprev) captures lifetime ever-diagnosis, not current functional impairment; the 31% national estimate reflects cumulative diagnostic history.
+</div>
+
+<h2>I. Oswego County Summary</h2>
+
+<div class="chart-container">
+  <div class="chart-title">Estimated Oswego County Adults by Condition &mdash; NSDUH 2024</div>
+  <canvas id="summaryChart"></canvas>
+  <p class="graph-note">Age-sex direct standardization: national NSDUH 2024 rates applied to Oswego ACS 2019&ndash;2023 population cells. Adult population reference: 11,308. ADHD = lifetime ever-diagnosis. SPD = K6 &ge;13 (PTSD proxy).</p>
+</div>
+
+<table>
+<thead><tr><th>Condition</th><th>Nat&rsquo;l Rate</th><th>Est. Oswego Adults</th><th>% of Adult Pop</th></tr></thead>
+<tbody>
+<tr><td>ADHD &mdash; lifetime ever-diagnosis</td><td>31.0%</td><td>~3,604</td><td>31.9%</td></tr>
+<tr><td>ADHD &mdash; current clinical estimate</td><td>4&ndash;6%</td><td>~450&ndash;680</td><td>~4&ndash;6%</td></tr>
+<tr><td>Serious Mental Illness (SMI), past year</td><td>12.1%</td><td>~1,424</td><td>12.6%</td></tr>
+<tr><td>Serious Psychological Distress (SPD/PTSD proxy)</td><td>13.9%</td><td>~1,760</td><td>15.6%</td></tr>
+<tr><td>Veteran status (ever served)</td><td>7.5%</td><td>~786</td><td>7.0%</td></tr>
+<tr><td>Memory difficulty &mdash; any</td><td>31.7%</td><td>~3,706</td><td>32.8%</td></tr>
+<tr><td>Memory difficulty &mdash; severe</td><td>4.4%</td><td>~558</td><td>4.9%</td></tr>
+<tr><td>SMI among veterans</td><td>10.2%</td><td>~80</td><td>0.7%</td></tr>
+<tr><td>SPD/PTSD proxy among veterans</td><td>10.9%</td><td>~86</td><td>0.8%</td></tr>
+</tbody>
+</table>
+
+<h2>II. Men&rsquo;s PTSD and ADHD &mdash; The Invisible Presentation</h2>
+<p>The ACE analysis (BRFSS companion) captures women&rsquo;s adversity experience more completely because women are more likely to report adversity and to present to healthcare settings. Men are systematically underrepresented in help-seeking data. This does not mean the burden is smaller &mdash; it means the measurement catches it less.</p>
+<p>The male PTSD presentation is systematically missed: anger and irritability rather than expressed fear; social withdrawal rather than reported loneliness; substance use as self-regulation rather than disclosed depression. HALO&rsquo;s pattern-based check-in catches these signals from behavioral data without requiring a man to say &ldquo;I am struggling&rdquo; in clinical language.</p>
+
+<div class="stat-block">
+  <div class="stat-num">~745</div>
+  <div class="stat-label">Estimated Oswego County men with Serious Psychological Distress (PTSD proxy) &mdash; most will never self-identify in a clinical setting using that language</div>
+</div>
+
+<h3>Estimated Oswego Men with SPD (PTSD Proxy)</h3>
+<table>
+<thead><tr><th>Age Group</th><th>Oswego Men</th><th>National Rate</th><th>Estimated Count</th></tr></thead>
+<tbody>
+<tr><td>18&ndash;24</td><td>1,280</td><td>24.2%</td><td>~309</td></tr>
+<tr><td>25&ndash;34</td><td>820</td><td>20.4%</td><td>~168</td></tr>
+<tr><td>35&ndash;49</td><td>1,222</td><td>12.8%</td><td>~156</td></tr>
+<tr><td>50&ndash;64</td><td>1,028</td><td>7.3%</td><td>~75</td></tr>
+<tr><td>65+</td><td>1,200</td><td>3.1%</td><td>~37</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>5,550</strong></td><td>&mdash;</td><td><strong>~745</strong></td></tr>
+</tbody>
+</table>
+
+<h2>III. Veteran Mental Health Burden</h2>
+<p>20 years of war (2001&ndash;2021) produced a veteran cohort that aged through their 20s and 30s in high-threat, high-activation environments and returned to civilian infrastructure not built for them. The 35&ndash;49 and 50&ndash;64 male cohorts now represent the peak concentration of unmet PTSD need in rural counties like Oswego. HRSA classifies most of Oswego County as a Mental Health Professional Shortage Area (HPSA).</p>
+
+<div class="stat-block">
+  <div class="stat-num">~86</div>
+  <div class="stat-label">Estimated Oswego veterans with SPD/PTSD proxy &mdash; in a county classified as a Mental Health Professional Shortage Area with no appointment required to access HALO</div>
+</div>
+
+<h2>IV. The Vocabulary-Capacity Gap Population</h2>
+<p>NSDUH memory difficulty data (national) combined with BRFSS DECIDE (NY-specific) triangulates the population HALO is specifically designed to serve:</p>
+<ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text); line-height: 2;">
+  <li>Veterans with undiagnosed or undertreated PTSD (SPD proxy)</li>
+  <li>Adults with ADHD whose executive function affects care-seeking behavior</li>
+  <li>Adults with significant memory or cognitive difficulty (~1,382&ndash;3,706 Oswego adults)</li>
+  <li>Non-verbal and low-verbal populations</li>
+  <li>Anyone whose vocabulary capacity does not match their internal experience</li>
+</ul>
+<p>A person who cannot construct a grammatically complex sentence about their distress is not experiencing less distress. They are experiencing more isolation because every system designed to help them is gated by an articulation threshold they cannot reliably meet. HALO removes that gate. 672 check-ins across 216 days &mdash; the protocol works with short, sparse responses and extracts pattern from behavioral data rather than requiring clinical self-report.</p>
+
+<div class="methods-note">
+<strong>Methodology:</strong> Survey: NSDUH 2024 Public Use File, SAMHSA (N=47,299 adults 18+). Weight: ANALWT2_C. Variance: Taylor-series linearized SE. Age: AGE3 codes 4&ndash;11 = adults 18+; minors excluded. Standardization: age-sex direct standardization to Oswego ACS 2019&ndash;2023 cells. No state filter: FIPS identifiers removed from public-use file; national rates applied to Oswego. PTSD proxy: SPD (K6 &ge; 13) and SMI &mdash; clearly labeled; PTSD module dropped from NSDUH 2024. ADHD: addprev = lifetime ever-diagnosis; current clinical estimate ~4&ndash;6% (APA DSM-5-TR). Software: Python (pandas, numpy). For peer-reviewed publication, rerun in R with svydesign() for design-based variance.
+</div>
+
+<div class="separator">&middot; &middot; &middot;</div>
+
+<div class="works-cited">
+<h2>Works Cited</h2>
+<p>American Psychiatric Association. (2022). <em>Diagnostic and statistical manual of mental disorders</em> (5th ed., text rev.; DSM-5-TR). American Psychiatric Association Publishing.</p>
+<p>Kessler, R. C., et al. (2003). Screening for serious mental illness in the general population. <em>Archives of General Psychiatry, 60</em>(2), 184&ndash;189.</p>
+<p>U.S. Census Bureau. (2019&ndash;2023). <em>American Community Survey 5-year estimates, Oswego County, New York.</em> U.S. Census Bureau.</p>
+<p>U.S. Substance Abuse and Mental Health Services Administration. (2024). <em>National Survey on Drug Use and Health: 2024 public use file.</em> SAMHSA. <a href="https://www.samhsa.gov/data/data-we-collect/nsduh" target="_blank">samhsa.gov/data/data-we-collect/nsduh</a>.</p>
+</div>
+
+<div class="footer">
+AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All analyses, population estimates, and clinical interpretations are the author&rsquo;s own.
+</div>
+
+</div>
+
+<script>
+// Summary bar chart — Oswego adult estimates by condition
+new Chart(document.getElementById('summaryChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Memory\nDifficulty (any)',
+      'ADHD\n(lifetime dx)',
+      'SPD/PTSD\nProxy',
+      'Serious Mental\nIllness (SMI)',
+      'Memory\nDifficulty (severe)',
+      'ADHD\n(current clinical)'
+    ],
+    datasets: [{
+      label: 'Estimated Oswego Adults',
+      data: [3706, 3604, 1760, 1424, 558, 565],
+      backgroundColor: [
+        '#8b7aaa', '#8b7aaa',
+        '#cc7a52', '#cc7a52',
+        '#9a8a6a', '#9a8a6a'
+      ],
+      barPercentage: 0.7
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: 'Estimated Oswego County adults by condition — NSDUH 2024 national rates applied via direct standardization', color: '#999' }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#999' }, grid: { color: '#2a2935' },
+        title: { display: true, text: 'Estimated Count', color: '#999' }
+      },
+      y: { ticks: { color: '#999' }, grid: { color: '#2a2935' } }
+    }
+  }
+});
+</script>
+</body>
+</html>

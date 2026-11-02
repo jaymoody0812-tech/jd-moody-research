@@ -31,6 +31,10 @@
   th, td { border: 1px solid #2a2935; padding: 0.5rem 0.7rem; text-align: left; }
   th { color: var(--accent); }
   td { color: #d8d4e0; }
+  .stat-block { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; }
+  .stat-block .stat-num { font-size: 2rem; font-weight: bold; color: var(--accent); }
+  .stat-block .stat-label { color: var(--muted); font-size: 0.9rem; }
+  .separator { text-align: center; color: var(--muted); margin: 2rem 0; letter-spacing: 0.5rem; }
   .works-cited { margin-top: 3rem; }
   .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
   .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
@@ -99,6 +103,26 @@
 
 <blockquote>CCT describes not a single crisis but a permanent condition of accelerating oscillation. The adaptive challenge is not to survive a crisis but to build the continuous adaptive capacity that compressed-cycle existence requires.</blockquote>
 
+
+<div class="separator">&middot; &middot; &middot;</div>
+
+<h2>VII. Behavioral Health Simulation &mdash; CCT at the Micro Scale</h2>
+<p>CCT&rsquo;s dual-scale claim is directly testable in behavioral health data. If the same compression mechanism operates at the individual level &mdash; shortening intervals between stabilization and destabilization, elevating baseline cognitive load, degrading trust in external stability anchors &mdash; then longitudinal self-report data should show the hallmarks of accelerating oscillation: tightening cycles, earlier floors, and higher peaks before collapse.</p>
+<p>The HALO 42-day canary test series (documented in the companion <a href="./insilico.html">In-Silico Findings Report</a>) ran four pre-registered phenotypic profiles through 42-day simulations using claude-haiku-4-5 as the wellness-companion agent. The results operationalize the CCT micro-scale claim:</p>
+
+<div class="stat-block">
+  <div class="stat-num">34&times;</div>
+  <div class="stat-label">Separation between Profile D (Collapse) len_trend and all other profiles &mdash; +85.3 words/turn vs &le;+2.5. The collapse signature is detectable in AI response behavior before the mood floor is reached.</div>
+</div>
+
+<h3>CCT Predicts the Detection Gap</h3>
+<p>The silent collapse rate (47% in Stabilizer profiles) is a direct CCT prediction. Compression produces collapse events that look identical to stability until the moment of floor. The Stabilizer profile, by definition, has low within-day oscillation &mdash; the signal that would normally precede a cascade is absent. The collapse occurs when the baseline erodes rather than when oscillation amplifies. This is the individual-scale equivalent of institutional collapse in CCT: gradual beneath-threshold erosion, then rapid non-linear transition. The monitoring interval required to catch it is shorter than weekly therapy sessions provide.</p>
+
+<h3>CCT Predicts the Adversity Gradient</h3>
+<p>The adversity-to-crisis gradient from BRFSS 2021 ACE data (12.9% &rarr; 42.0% mental health crisis rate, ACE=0 to ACE&ge;3) follows the same exponential shape CCT predicts for civilizational fracture under compounding stressors. The second jump &mdash; 42.0% &rarr; 87.9% for adversity-exposed individuals embedded in amplifying rather than damping co-regulatory environments &mdash; is the replacement co-regulation finding. CCT names this: the direction of the co-regulatory environment determines whether the same compression produces recovery or collapse. Same acceleration; different direction of embedding; opposite outcome.</p>
+
+<p>The design implication is stated here as theory: a support system operating at pre-compression contact intervals (weekly therapy, monthly check-ins) is structurally inadequate for a population experiencing compressed-cycle individual cascades. High-frequency, longitudinal, pattern-sensitive monitoring is not a feature enhancement. Under CCT, it is the minimum necessary architecture.</p>
+
 <div class="works-cited">
 <h2>Works Cited</h2>
 <p>Turchin, P., &amp; Nefedov, S. (2009). <em>Secular Cycles.</em> Princeton University Press.</p>
@@ -111,7 +135,7 @@
 </div>
 
 <div class="footer">
-HALO &mdash; Independent Research &middot; Cascade Compression Theory &middot; theory &amp; method only; engine, data, and clinical material withheld (see DISCLOSURE).
+AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All arguments, analytical conclusions, and citations are the author&rsquo;s own.
 </div>
 
 </div>

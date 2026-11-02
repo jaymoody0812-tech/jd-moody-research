@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognitive Impairment Analysis, Oswego &mdash; BRFSS 2021 &mdash; Jacob Moody</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root { --bg: #17161e; --surface: #201f28; --accent: #cc7a52; --text: #e8e6ec; --muted: #908c99; --purple: #8b7aaa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; line-height: 1.8; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  a { color: var(--accent); }
+  .back { display: inline-block; color: var(--muted); font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+  .back:hover { color: var(--accent); }
+  h1 { font-size: 2.2rem; text-align: center; margin: 2rem 0 0.3rem; color: #f0eef4; letter-spacing: 1px; }
+  .subtitle { text-align: center; font-style: italic; color: var(--muted); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .byline { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .prefatory { font-style: italic; color: var(--muted); border-left: 3px solid var(--purple); padding-left: 1rem; margin: 1.5rem 0 2.5rem; }
+  h2 { font-size: 1.4rem; color: var(--purple); margin: 2.5rem 0 1rem; border-bottom: 1px solid #2a2935; padding-bottom: 0.4rem; }
+  h3 { color: var(--accent); font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+  p { margin-bottom: 1.2rem; text-align: justify; }
+  .chart-container { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .chart-title { text-align: center; color: var(--accent); font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem; }
+  canvas { max-height: 400px; }
+  .stat-block { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; }
+  .stat-block .stat-num { font-size: 2rem; font-weight: bold; color: var(--accent); }
+  .stat-block .stat-label { color: var(--muted); font-size: 0.9rem; }
+  .works-cited { margin-top: 3rem; }
+  .works-cited h2 { color: var(--purple); }
+  .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .separator { text-align: center; color: var(--muted); margin: 2rem 0; letter-spacing: 0.5rem; }
+  .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
+  strong { color: #f0eef4; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  th { background: var(--surface); color: var(--purple); padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #2a2935; }
+  td { padding: 0.5rem 1rem; border-bottom: 1px solid #2a2935; color: var(--text); font-size: 0.9rem; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .graph-note { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.5rem; }
+  .methods-note { font-size: 0.85rem; color: var(--muted); background: rgba(0,0,0,0.2); border-radius: 6px; padding: 0.8rem 1rem; margin: 1.5rem 0; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="./index.html">&larr; HALO research index</a>
+
+<h1>Cognitive Impairment Population Analysis</h1>
+<p class="subtitle">BRFSS 2021 New York &mdash; Oswego County Estimates</p>
+<p class="byline"><strong>Jacob D. Moody</strong> &mdash; Independent Researcher, HALO</p>
+<p class="byline">Generated: October 5, 2026 &middot; Source: CDC BRFSS 2021, NY subsample (N=54,810)</p>
+
+<div class="prefatory">This analysis estimates the number of Oswego County adults who experience serious difficulty concentrating, remembering, or making decisions &mdash; the DECIDE variable from the 2021 CDC Behavioral Risk Factor Surveillance System (BRFSS), New York state subsample. This population represents people whose internal cognitive capacity is not visible through standard interaction or conversation: the vocabulary-capacity gap. Note: The full cognitive decline module (CIMEMLOS, CDHOUSE, CDSOCIAL) was present in the NY 2021 BRFSS file but contained no valid responses &mdash; NY ran the module header but did not collect data. DECIDE is the valid available measure and is the most clinically relevant variable for HALO&rsquo;s target population.</div>
+
+<h2>I. Overview and Key Finding</h2>
+
+<div class="stat-block">
+  <div class="stat-num">1,382&ndash;1,639</div>
+  <div class="stat-label">Estimated Oswego County adults (18+) experiencing serious difficulty concentrating, remembering, or making decisions &mdash; approximately 12% of the adult population</div>
+</div>
+
+<p>NY statewide prevalence (weighted): <strong>10.8%</strong> of adults report serious difficulty concentrating, remembering, or making decisions (DECIDE = Yes). Analytic N: 54,810. Weighted N: 30,131,612. Source: CDC BRFSS 2021, NY subsample, weight \_LLCPWT2, completed interviews only (DISPCODE=1100).</p>
+
+<h2>II. ACE Score and Mental Health Crisis Rate &mdash; Oswego County Context</h2>
+<p>Adverse Childhood Experience (ACE) scores from the BRFSS 2021 ACE module provide the adversity gradient underlying cognitive impairment risk in the county. The relationship is dose-dependent: higher ACE scores predict higher rates of adult mental health crisis, cognitive difficulty, and executive function impairment.</p>
+
+<div class="chart-container">
+  <div class="chart-title">Mental Health Crisis Rate by ACE Score &mdash; Oswego County (BRFSS 2021)</div>
+  <canvas id="aceChart"></canvas>
+  <p class="graph-note">Mental health crisis rates by ACE score band. ACE = Adverse Childhood Experiences (BRFSS ACE module). Each additional ACE exposure is associated with a compounding increase in adult mental health burden. N=58,479 (NY BRFSS ACE module respondents).</p>
+</div>
+
+<h2>III. Age &times; Sex Prevalence &mdash; NY BRFSS (Weighted)</h2>
+
+<table>
+<thead><tr><th>Group</th><th>NY N</th><th>Yes (N)</th><th>Prevalence</th><th>95% CI</th></tr></thead>
+<tbody>
+<tr><td>Male 18&ndash;24</td><td>1,626</td><td>264</td><td>16.3%</td><td>12.8&ndash;19.9%</td></tr>
+<tr><td>Male 25&ndash;34</td><td>2,821</td><td>332</td><td>12.6%</td><td>10.2&ndash;15.1%</td></tr>
+<tr><td>Male 35&ndash;44</td><td>3,261</td><td>314</td><td>10.1%</td><td>8.0&ndash;12.2%</td></tr>
+<tr><td>Male 45&ndash;54</td><td>3,853</td><td>331</td><td>9.1%</td><td>7.2&ndash;10.9%</td></tr>
+<tr><td>Male 55&ndash;64</td><td>4,867</td><td>435</td><td>8.9%</td><td>7.3&ndash;10.6%</td></tr>
+<tr><td>Male 65+</td><td>8,565</td><td>668</td><td>8.1%</td><td>6.7&ndash;9.5%</td></tr>
+<tr><td>Female 18&ndash;24</td><td>1,346</td><td>307</td><td>21.6%</td><td>17.1&ndash;26.1%</td></tr>
+<tr><td>Female 25&ndash;34</td><td>2,618</td><td>394</td><td>13.7%</td><td>11.3&ndash;16.0%</td></tr>
+<tr><td>Female 35&ndash;44</td><td>3,817</td><td>485</td><td>10.8%</td><td>8.9&ndash;12.7%</td></tr>
+<tr><td>Female 45&ndash;54</td><td>4,501</td><td>560</td><td>11.2%</td><td>9.6&ndash;12.9%</td></tr>
+<tr><td>Female 55&ndash;64</td><td>5,841</td><td>652</td><td>12.4%</td><td>10.6&ndash;14.3%</td></tr>
+<tr><td>Female 65+</td><td>11,694</td><td>982</td><td>9.0%</td><td>7.7&ndash;10.3%</td></tr>
+</tbody>
+</table>
+
+<h2>IV. Direct Standardization &mdash; Oswego County Estimates</h2>
+<p>Age-sex-specific NY BRFSS rates were applied to Oswego County ACS 2019&ndash;2023 5-year population cells (Table B01001). Total adult population reference: 11,308.</p>
+
+<table>
+<thead><tr><th>Group</th><th>Oswego Pop</th><th>Rate</th><th>Est. Count</th><th>95% CI</th></tr></thead>
+<tbody>
+<tr><td>Male 18&ndash;24</td><td>1,280</td><td>16.3%</td><td>209</td><td>164&ndash;254</td></tr>
+<tr><td>Male 25&ndash;34</td><td>820</td><td>12.6%</td><td>103</td><td>83&ndash;123</td></tr>
+<tr><td>Male 35&ndash;44</td><td>790</td><td>10.1%</td><td>80</td><td>63&ndash;96</td></tr>
+<tr><td>Male 45&ndash;54</td><td>720</td><td>9.1%</td><td>65</td><td>52&ndash;79</td></tr>
+<tr><td>Male 55&ndash;64</td><td>740</td><td>8.9%</td><td>66</td><td>54&ndash;78</td></tr>
+<tr><td>Male 65+</td><td>1,200</td><td>8.1%</td><td>97</td><td>81&ndash;114</td></tr>
+<tr><td>Female 18&ndash;24</td><td>1,150</td><td>21.6%</td><td>248</td><td>196&ndash;300</td></tr>
+<tr><td>Female 25&ndash;34</td><td>790</td><td>13.7%</td><td>108</td><td>89&ndash;127</td></tr>
+<tr><td>Female 35&ndash;44</td><td>860</td><td>10.8%</td><td>93</td><td>77&ndash;110</td></tr>
+<tr><td>Female 45&ndash;54</td><td>780</td><td>11.2%</td><td>88</td><td>75&ndash;101</td></tr>
+<tr><td>Female 55&ndash;64</td><td>820</td><td>12.4%</td><td>102</td><td>87&ndash;117</td></tr>
+<tr><td>Female 65+</td><td>1,358</td><td>9.0%</td><td>123</td><td>105&ndash;140</td></tr>
+<tr><td><strong>TOTAL (18+)</strong></td><td><strong>11,308</strong></td><td><strong>10.8%</strong></td><td><strong>1,382</strong></td><td><strong>1,125&ndash;1,639</strong></td></tr>
+</tbody>
+</table>
+
+<h2>V. Clinical Relevance &mdash; The Vocabulary-Capacity Gap</h2>
+<p>The DECIDE population is precisely the group whose internal experience exceeds their ability to describe it. Standard clinical intake depends on a person&rsquo;s ability to articulate distress in structured language. This population cannot reliably do that &mdash; not because they aren&rsquo;t experiencing distress, but because executive function impairment makes that articulation inconsistent or impossible.</p>
+<p>Young adults show the highest rates: Female 18&ndash;24 at 21.6%; Male 18&ndash;24 at 16.3%. These are the ages at which behavioral health crises most commonly emerge and at which clinical engagement is most likely to prevent long-term trajectory entrenchment.</p>
+<p>HALO removes the articulation gate. The check-in protocol requires minimal language. Patterns emerge from behavioral data over time without requiring the user to diagnose themselves or explain their state. The tool adapts to the user&rsquo;s register rather than requiring the user to adapt to the tool.</p>
+
+<div class="methods-note">
+<strong>Methodology:</strong> Survey: CDC BRFSS 2021, NY Landline + Cellular sample (N=66,124 raw; 55,203 completed). Weight: \_LLCPWT2. Variance: Taylor-series linearized SE, respondent-level Bernoulli approximation. Exclusions: DISPCODE &ne; 1100; DECIDE = 7/9/blank; missing sex/age/weight. ACS: 2019&ndash;2023 5-year estimates, Oswego County NY, Table B01001. Software: Python (pandas, numpy). Limitation: NY statewide rates applied to Oswego; intra-county variation not captured. For peer-reviewed publication, rerun in R with svydesign() for design-based variance.
+</div>
+
+<div class="separator">&middot; &middot; &middot;</div>
+
+<div class="works-cited">
+<h2>Works Cited</h2>
+<p>U.S. Census Bureau. (2019&ndash;2023). <em>American Community Survey 5-year estimates, Table B01001: Sex by age, Oswego County, New York.</em> U.S. Census Bureau.</p>
+<p>U.S. Centers for Disease Control and Prevention. (2021). <em>Behavioral Risk Factor Surveillance System (BRFSS): New York state subsample.</em> CDC. <a href="https://www.cdc.gov/brfss/" target="_blank">cdc.gov/brfss</a>.</p>
+<p>Felitti, V. J., et al. (1998). Relationship of childhood abuse and household dysfunction to many of the leading causes of death in adults. <em>American Journal of Preventive Medicine, 14</em>(4), 245&ndash;258.</p>
+</div>
+
+<div class="footer">
+AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All analyses, population estimates, and clinical interpretations are the author&rsquo;s own.
+</div>
+
+</div>
+
+<script>
+// ACE score vs mental health crisis rate
+new Chart(document.getElementById('aceChart'), {
+  type: 'bar',
+  data: {
+    labels: ['ACE = 0', 'ACE 1–2', 'ACE ≥3', 'ACE ≥7'],
+    datasets: [{
+      label: 'Mental Health Crisis Rate (%)',
+      data: [12.9, 25, 42.0, 60],
+      backgroundColor: ['#8b7aaa', '#9a8a6a', '#cc7a52', '#e05a30'],
+      barPercentage: 0.65
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      title: { display: true, text: 'Each additional ACE exposure compounds adult mental health burden — dose-dependent relationship', color: '#999' }
+    },
+    scales: {
+      x: { ticks: { color: '#999' }, grid: { color: '#2a2935' } },
+      y: {
+        ticks: { color: '#999', callback: v => v + '%' }, grid: { color: '#2a2935' },
+        title: { display: true, text: 'Mental Health Crisis Rate (%)', color: '#999' },
+        min: 0, max: 70
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

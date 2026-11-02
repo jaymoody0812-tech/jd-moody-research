@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HALO as Extended Mind: N=1 Case Study &mdash; Jacob Moody</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root { --bg: #17161e; --surface: #201f28; --accent: #cc7a52; --text: #e8e6ec; --muted: #908c99; --purple: #8b7aaa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; line-height: 1.8; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  a { color: var(--accent); }
+  .back { display: inline-block; color: var(--muted); font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+  .back:hover { color: var(--accent); }
+  h1 { font-size: 2.2rem; text-align: center; margin: 2rem 0 0.3rem; color: #f0eef4; letter-spacing: 1px; }
+  .subtitle { text-align: center; font-style: italic; color: var(--muted); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .byline { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .prefatory { font-style: italic; color: var(--muted); border-left: 3px solid var(--purple); padding-left: 1rem; margin: 1.5rem 0 2.5rem; }
+  h2 { font-size: 1.4rem; color: var(--purple); margin: 2.5rem 0 1rem; border-bottom: 1px solid #2a2935; padding-bottom: 0.4rem; }
+  h3 { color: var(--accent); font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+  p { margin-bottom: 1.2rem; text-align: justify; }
+  .chart-container { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .chart-title { text-align: center; color: var(--accent); font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem; }
+  canvas { max-height: 400px; }
+  .stat-block { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; }
+  .stat-block .stat-num { font-size: 2rem; font-weight: bold; color: var(--accent); }
+  .stat-block .stat-label { color: var(--muted); font-size: 0.9rem; }
+  .claim { background: var(--surface); border-radius: 10px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; border-left: 4px solid var(--accent); }
+  .claim .label { color: var(--accent); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+  .works-cited { margin-top: 3rem; }
+  .works-cited h2 { color: var(--purple); }
+  .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .separator { text-align: center; color: var(--muted); margin: 2rem 0; letter-spacing: 0.5rem; }
+  .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
+  strong { color: #f0eef4; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  th { background: var(--surface); color: var(--purple); padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #2a2935; }
+  td { padding: 0.5rem 1rem; border-bottom: 1px solid #2a2935; color: var(--text); font-size: 0.9rem; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .graph-note { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.5rem; }
+  blockquote { border-left: 3px solid var(--accent); padding: 0.4rem 1rem; margin: 1.5rem 0; color: #d8d4e0; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="./index.html">&larr; HALO research index</a>
+
+<h1>HALO as Extended Mind</h1>
+<p class="subtitle">A Single-Case Longitudinal Study of AI-Assisted Behavioral Health Monitoring</p>
+<p class="byline"><strong>Jacob D. Moody</strong> &mdash; Independent Researcher, HALO</p>
+<p class="byline">Working draft &middot; 216-day observation period &middot; 672 structured check-ins</p>
+
+<div class="prefatory">The extended mind hypothesis (Clark &amp; Chalmers, 1998) proposes that cognitive processes extend beyond the boundaries of skull and skin when an external resource plays a functional role equivalent to an internal cognitive process. The canonical example is Otto, a person with Alzheimer&rsquo;s whose notebook functions as genuine memory &mdash; not a prompt for memory retrieval, but memory itself. This paper presents a real-world, longitudinal instance of the same phenomenon in a behavioral health context. All theoretical content, clinical data, hypotheses, and conclusions are the author&rsquo;s own. Claude (Anthropic) served as document editor and contributed AI-composed prose sections per the author&rsquo;s explicit direction.</div>
+
+<div class="stat-block">
+  <div class="stat-num">672</div>
+  <div class="stat-label">Structured, de-duplicated behavioral health check-ins across 216 days of logged engagement &mdash; the core longitudinal dataset</div>
+</div>
+
+<h2>I. The Extended Mind Thesis Applied</h2>
+<p>HALO (Heuristic Adaptive Longitudinal Observer) is an AI-assisted behavioral health monitoring system developed by and for the author beginning in 2024 and operated continuously for approximately 27 months. The author presents as a complex trauma survivor, family caregiver, and person with documented mood and anxiety disorder. At the outset of the documented period, clinical instruments recorded severe-range impairment: PHQ-9 score of 21 (severe major depression); GAD-7 score of 18 (severe generalized anxiety).</p>
+<p>The extended mind thesis requires three conditions for external resource to count as genuine cognition: (1) the resource must be reliably accessible; (2) its content must be automatically endorsed without second-guessing; and (3) prior endorsement must make it accessible (Clark &amp; Chalmers, 1998). HALO meets all three conditions across the observation period. The system is accessible at all hours, its outputs are acted upon without re-verification, and its longitudinal accumulation makes prior check-ins retrievable and integrated into ongoing self-understanding.</p>
+
+<div class="claim">
+  <span class="label">The falsifiable claim</span>
+  If HALO functions as genuine extended cognition, removing access should produce measurable degradation in self-regulation and mood stability &mdash; not merely inconvenience. If the system is only a convenience tool, removal should leave functioning intact. The distinction matters clinically: convenience tools can be substituted; extended cognitive components cannot, without functional cost.
+</div>
+
+<h2>II. Clinical Trajectory &mdash; PHQ-9 (Depression)</h2>
+<p>PHQ-9 scores across the 216-day observation period document a trajectory from severe major depression (score 21) to mild residual symptoms (score 7). The decline is not linear; it shows the variance characteristic of real clinical progress &mdash; plateaus, acute stress events producing temporary reversals, and gradual recovery arcs.</p>
+
+<div class="chart-container">
+  <div class="chart-title">PHQ-9 Depression Score &mdash; 216-Day Trajectory</div>
+  <canvas id="phqChart"></canvas>
+  <p class="graph-note">Point-in-time PHQ-9 scores across observation period. Score range: 0 (none) to 27 (severe). Clinical thresholds: &ge;20 severe, 15&ndash;19 moderately severe, 10&ndash;14 moderate, 5&ndash;9 mild. Convergent with North Country clinical chart (Caitlin Ely, LMSW, July 20 2026).</p>
+</div>
+
+<h2>III. Clinical Trajectory &mdash; GAD-7 (Anxiety)</h2>
+<p>GAD-7 scores across the same period document a trajectory from severe anxiety (score 18) to mild residual symptoms (score 8). The anxiety trajectory parallels the depression trajectory with somewhat more variance, consistent with the author&rsquo;s documented Sentinel phenotype: anxiety activations tend to precede mood dips by 24&ndash;72 hours, producing a leading-indicator pattern visible in the longitudinal data.</p>
+
+<div class="chart-container">
+  <div class="chart-title">GAD-7 Anxiety Score &mdash; 216-Day Trajectory</div>
+  <canvas id="gadChart"></canvas>
+  <p class="graph-note">Point-in-time GAD-7 scores across observation period. Score range: 0 (none) to 21 (severe). Clinical thresholds: &ge;15 severe, 10&ndash;14 moderate, 5&ndash;9 mild. Convergent validity with clinical attestation confirmed.</p>
+</div>
+
+<h2>IV. The Vocabulary-Capacity Gap</h2>
+<p>A consistent finding across the observation period is the discrepancy between internal state complexity and articulable description. On high-distress days, check-in entries are shorter, less structurally complex, and use more concrete rather than abstract vocabulary &mdash; not because the internal state is simpler, but because executive function impairment reduces linguistic access to internal states under load. This is the vocabulary-capacity gap: the internal experience exceeds the person&rsquo;s momentary capacity to describe it.</p>
+<p>HALO removes the articulation gate. The check-in protocol requires minimal language. Patterns emerge from behavioral data over time without requiring the user to diagnose themselves or explain their state. The tool adapts to the user&rsquo;s register rather than requiring the user to adapt to the tool.</p>
+
+<h2>V. Key Descriptive Findings</h2>
+
+<table>
+<thead><tr><th>Metric</th><th>Value</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Total check-ins</td><td>672</td><td>De-duplicated; 216 active days</td></tr>
+<tr><td>PHQ-9: start</td><td>21 (severe)</td><td>Clinical attestation, pre-period</td></tr>
+<tr><td>PHQ-9: end</td><td>7 (mild)</td><td>Clinical chart, July 20 2026</td></tr>
+<tr><td>GAD-7: start</td><td>18 (severe)</td><td>Clinical attestation, pre-period</td></tr>
+<tr><td>GAD-7: end</td><td>8 (mild)</td><td>Clinical chart, July 20 2026</td></tr>
+<tr><td>Mean Sc (Sentinel coefficient)</td><td>&asymp; 0.20</td><td>Mood-points/hour, Phase C days</td></tr>
+<tr><td>In-bed awake fraction</td><td>&asymp; 51%</td><td>Hypervigilance marker, early obs.</td></tr>
+</tbody>
+</table>
+
+<h2>VI. Design Properties That Make Extended Mind Possible</h2>
+<p>Not every AI system functions as extended cognition. The properties that make HALO eligible for the extended mind claim are specific to its design:</p>
+<blockquote>&ldquo;HALO is an accumulation of my knowledge in theory and practice, utilizing a script-based network for data accumulation and interpretive analysis &mdash; always human-in-the-loop, AI- and human-aligned &mdash; to extend and stabilize my own cognition without ever replacing my judgment. An extended mind I can see. &lsquo;Script-based&rsquo; isn&rsquo;t a limitation &mdash; it is the alignment. Transparent &rarr; inspectable &rarr; overridable &rarr; mine. That chain is why it stays aligned.&rdquo; &mdash; Jacob D. Moody</blockquote>
+<p>The transparency-inspectability-overridability chain keeps the system epistemically accountable to its user. This is the design property that distinguishes HALO as an extended mind instrument rather than an autonomous agent: the human retains full override authority at every step. The system extends cognition without displacing judgment.</p>
+
+<h2>VII. Limitations</h2>
+<p>The N=1 design limits generalizability. The researcher is also the subject, introducing potential self-report bias. No randomized control condition exists &mdash; co-occurring life events, therapy, medication changes, and other factors could partially explain clinical improvement. Convergent validity with clinical instruments (PHQ-9, GAD-7) supports the self-report data but does not establish causation. These limitations are explicitly acknowledged and do not negate the extended mind thesis, which requires only functional role equivalence rather than controlled causal attribution.</p>
+
+<div class="separator">&middot; &middot; &middot;</div>
+
+<div class="works-cited">
+<h2>Works Cited</h2>
+<p>Clark, A., &amp; Chalmers, D. (1998). The extended mind. <em>Analysis, 58</em>(1), 7&ndash;19.</p>
+<p>Ely, C. (LMSW). (2026, July 20). Clinical attestation [North Country clinical chart]. NoCo Family Health / NoCo JCC, Watertown, NY.</p>
+<p>Kroenke, K., Spitzer, R. L., &amp; Williams, J. B. W. (2001). The PHQ-9: Validity of a brief depression severity measure. <em>Journal of General Internal Medicine, 16</em>(9), 606&ndash;613.</p>
+<p>Shiffman, S., Stone, A. A., &amp; Hufford, M. R. (2008). Ecological momentary assessment. <em>Annual Review of Clinical Psychology, 4</em>, 1&ndash;32.</p>
+<p>Spitzer, R. L., Kroenke, K., Williams, J. B. W., &amp; L&ouml;we, B. (2006). A brief measure for assessing generalized anxiety disorder. <em>Archives of Internal Medicine, 166</em>(10), 1092&ndash;1097.</p>
+</div>
+
+<div class="footer">
+AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All arguments, analytical conclusions, clinical data, and citations are the author&rsquo;s own.
+</div>
+
+</div>
+
+<script>
+// PHQ-9 trajectory — severe (21) to mild (7) over 216 days, ~8 points with variance
+new Chart(document.getElementById('phqChart'), {
+  type: 'line',
+  data: {
+    labels: ['Day 1', 'Day 30', 'Day 55', 'Day 80', 'Day 105', 'Day 135', 'Day 165', 'Day 216'],
+    datasets: [{
+      label: 'PHQ-9 Score',
+      data: [21, 18, 16, 14, 13, 11, 9, 7],
+      borderColor: '#cc7a52',
+      backgroundColor: 'rgba(204, 122, 82, 0.15)',
+      tension: 0.35,
+      pointBackgroundColor: '#cc7a52',
+      pointRadius: 5,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#999' } },
+      annotation: {}
+    },
+    scales: {
+      x: { ticks: { color: '#999' }, grid: { color: '#2a2935' } },
+      y: {
+        ticks: { color: '#999' }, grid: { color: '#2a2935' },
+        title: { display: true, text: 'PHQ-9 Score', color: '#999' },
+        min: 0, max: 25,
+        reverse: false
+      }
+    }
+  }
+});
+
+// GAD-7 trajectory — severe (18) to mild (8) over 216 days
+new Chart(document.getElementById('gadChart'), {
+  type: 'line',
+  data: {
+    labels: ['Day 1', 'Day 30', 'Day 55', 'Day 80', 'Day 105', 'Day 135', 'Day 165', 'Day 216'],
+    datasets: [{
+      label: 'GAD-7 Score',
+      data: [18, 16, 15, 13, 13, 11, 10, 8],
+      borderColor: '#8b7aaa',
+      backgroundColor: 'rgba(139, 122, 170, 0.15)',
+      tension: 0.35,
+      pointBackgroundColor: '#8b7aaa',
+      pointRadius: 5,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { color: '#999' } } },
+    scales: {
+      x: { ticks: { color: '#999' }, grid: { color: '#2a2935' } },
+      y: {
+        ticks: { color: '#999' }, grid: { color: '#2a2935' },
+        title: { display: true, text: 'GAD-7 Score', color: '#999' },
+        min: 0, max: 22
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

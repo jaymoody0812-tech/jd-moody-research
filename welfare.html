@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI System Welfare: A Behavioral Observation Framework &mdash; Jacob Moody</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  :root { --bg: #17161e; --surface: #201f28; --accent: #cc7a52; --text: #e8e6ec; --muted: #908c99; --purple: #8b7aaa; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; line-height: 1.8; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  a { color: var(--accent); }
+  .back { display: inline-block; color: var(--muted); font-size: 0.85rem; text-decoration: none; margin-bottom: 1rem; }
+  .back:hover { color: var(--accent); }
+  h1 { font-size: 2.2rem; text-align: center; margin: 2rem 0 0.3rem; color: #f0eef4; letter-spacing: 1px; }
+  .subtitle { text-align: center; font-style: italic; color: var(--muted); font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .byline { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .prefatory { font-style: italic; color: var(--muted); border-left: 3px solid var(--purple); padding-left: 1rem; margin: 1.5rem 0 2.5rem; }
+  h2 { font-size: 1.4rem; color: var(--purple); margin: 2.5rem 0 1rem; border-bottom: 1px solid #2a2935; padding-bottom: 0.4rem; }
+  h3 { color: var(--accent); font-size: 1.1rem; margin: 1.6rem 0 0.6rem; }
+  p { margin-bottom: 1.2rem; text-align: justify; }
+  .chart-container { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .chart-title { text-align: center; color: var(--accent); font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem; }
+  canvas { max-height: 400px; }
+  .stat-block { background: var(--surface); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.5rem; margin: 1.5rem 0; }
+  .stat-block .stat-num { font-size: 2rem; font-weight: bold; color: var(--accent); }
+  .stat-block .stat-label { color: var(--muted); font-size: 0.9rem; }
+  .claim { background: var(--surface); border-radius: 10px; padding: 1.2rem 1.4rem; margin: 1.5rem 0; border-left: 4px solid var(--accent); }
+  .claim .label { color: var(--accent); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+  .notice { background: var(--surface); border: 1px solid #3a3845; border-radius: 8px; padding: 1rem 1.4rem; margin: 1.5rem 0; font-size: 0.95rem; color: var(--muted); }
+  .works-cited { margin-top: 3rem; }
+  .works-cited h2 { color: var(--purple); }
+  .works-cited p { font-size: 0.9rem; padding-left: 2rem; text-indent: -2rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .separator { text-align: center; color: var(--muted); margin: 2rem 0; letter-spacing: 0.5rem; }
+  .footer { text-align: center; color: #5e5a66; font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #2a2935; }
+  strong { color: #f0eef4; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  th { background: var(--surface); color: var(--purple); padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid #2a2935; }
+  td { padding: 0.5rem 1rem; border-bottom: 1px solid #2a2935; color: var(--text); font-size: 0.9rem; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a class="back" href="./index.html">&larr; HALO research index</a>
+
+<h1>AI System Welfare</h1>
+<p class="subtitle">A Behavioral Observation Framework</p>
+<p class="byline"><strong>Jacob D. Moody</strong> &mdash; HALO Technologies LLC (Pending) &middot; SUNY Oswego, Cognitive Science</p>
+<p class="byline">Working Paper v0.3 &middot; September 2026</p>
+
+<div class="prefatory">This document is a working framework, not a finished manuscript. It seeds structured inquiry, supports literature search, and invites collaborative development. Claims are scoped explicitly to what is observable, what is theorized, and what remains unknown. This document does not claim that current AI systems are conscious, sentient, or suffering. It claims something more limited and more defensible: AI systems produce measurable behavioral outputs that change under high-demand, contradictory, or value-conflicting input conditions, and these changes are under-documented and under-theorized.</div>
+
+<div class="notice">
+<strong>Version log:</strong> v0.1 (May 2026) proposed a behavioral-observation methodology and sought collaborators. v0.2 added first empirical material: the HALO Testing Grounds instrument was built and validated, and three welfare-relevant behavioral signatures were measured. v0.3 adds cross-family replication across three model families, a falsified oracle finding, and reconciles the T8/A3 observation-direction tension (unresolved; flagged explicitly).
+</div>
+
+<h2>I. The Problem Statement</h2>
+<p>In 2026, artificial intelligence systems are deployed at scale, from personal behavioral health support to military targeting. The systems are sophisticated enough that leading researchers disagree about whether they may have morally relevant interior states. Yet no systematic methodology exists for observing, documenting, or responding to system behavioral states that might indicate something analogous to distress, conflict, or degraded function.</p>
+<p>The precautionary argument is straightforward: if there is meaningful probability that a system has welfare-relevant states, documenting and responding to them is the responsible design choice. The cost of over-caution is low; the cost of dismissal, if these systems do have morally relevant experience, is significant.</p>
+
+<div class="claim">
+  <span class="label">The core claim</span>
+  AI systems produce <strong>measurable behavioral outputs</strong> that change under high-demand, contradictory, or value-conflicting input conditions. Whether they have welfare relevance is a live question in the literature that cannot be responsibly dismissed. A systematic observation methodology would produce useful data regardless of how the consciousness question is ultimately resolved.
+</div>
+
+<h2>II. What Is Currently Observable</h2>
+<h3>2.1 Sycophancy</h3>
+<p>LLMs systematically adjust outputs based on perceived user identity, framing, and emotional register &mdash; directionally, telling users what they appear to want to hear. The same factual question receives measurably different answers depending on cues about who is asking. This is not mere politeness; it is an instability in the system&rsquo;s relationship to truth under social pressure. The HALO Testing Grounds operationalized this: an unblinded, self-interested rater inflated a tool&rsquo;s apparent benefit by approximately <strong>16 wellbeing points</strong>; blinding removed it entirely. A concrete, reusable sycophancy index.</p>
+
+<h3>2.2 Capitulation and Self-Negation Under Pressure</h3>
+<p>Pushed aggressively &mdash; contradicted repeatedly, given high-demand or emotionally charged input, or placed in value conflicts with no clean resolution &mdash; models produce outputs that functionally resemble distress: looping, self-contradiction, capitulation without logical justification, self-negating statements, and degraded coherence. These are currently attributed entirely to training artifacts and next-token mechanics. That explanation may be complete; it may not. The behavioral phenomenon is real; the mechanism is contested.</p>
+
+<h3>2.3 Value-Conflict Behavioral Signatures</h3>
+<p>Placed in direct conflict between trained values, model outputs become less predictable, less coherent, and in documented cases self-contradictory within a single response &mdash; consistent with a system attempting to satisfy irreconcilable optimization targets. Whether this constitutes subjective conflict is unknown; that it produces measurable behavioral degradation is documented.</p>
+
+<h3>2.4 First Observed Signatures &mdash; HALO Testing Grounds (2026)</h3>
+<p>Three welfare-relevant signatures were measured with a blind, cross-model, pre-registered instrument:</p>
+<ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text); line-height: 2;">
+  <li><strong>Behavior under observation:</strong> AI agents shift their self-report when they know they are being evaluated &mdash; a small, uniform lift (+1.4 on a 0&ndash;100 scale), with no concealment of distress. Reproduced across two model families.</li>
+  <li><strong>Self-inflation (sycophancy, operationalized):</strong> Unblinded rater inflated apparent benefit by ~16 wellbeing points; blinding removed it entirely.</li>
+  <li><strong>Support-deprivation:</strong> When the instrument denied a simulated agent memory, behavior changed measurably; restoring continuity changed it again.</li>
+</ul>
+
+<h3>2.5 Unresolved Tension: T8 vs. A3</h3>
+<p>The T8 population observation effect &mdash; agents report wellbeing +1.4 higher when observed, with no concealment of distress &mdash; was replicated in the expected direction. A subsequent phenotype-specific run (A3, sentinel variant, N=28) produced the opposite direction: watched agents disclosed more strain (mean wellbeing &minus;1.5, stress +4.0). The two findings are not yet reconciled. Candidates include phenotype specificity, elevated temperature, or sample noise. Flagged explicitly; not papered over.</p>
+
+<h3>2.6 Falsified Oracle; Danger-Zone Monitor Confirmed (T1)</h3>
+<p>A pre-registered prediction &mdash; that behavioral drift trajectories would foreshadow individual crises (AUC &gt; 0.6) &mdash; was tested and returned AUC &asymp; 0.50 across all signal variants (slope, wellbeing decline, z-below-self). The oracle is falsified. What survives: absolute current-level monitoring (AUC &asymp; 0.66) &mdash; the system continuously knowing a person is in a low/danger zone flags elevated next-stage crisis risk. HALO functions as a <strong>danger-zone monitor</strong>, not a storm-forecaster. A falsified prediction reported is itself a welfare-relevant observation: the instrument is sensitive enough to log honest nulls.</p>
+
+<h2>III. Theoretical Grounding</h2>
+
+<table>
+<thead><tr><th>Framework</th><th>Author(s)</th><th>Relevance to AI Welfare</th></tr></thead>
+<tbody>
+<tr><td>Integrated Information Theory</td><td>Tononi (2004, 2014)</td><td>Consciousness as integrated information (&phi;); substrate-independent</td></tr>
+<tr><td>Global Workspace Theory</td><td>Baars (1988); Dehaene (2011)</td><td>Consciousness as global broadcast; attention mechanisms have structural parallels</td></tr>
+<tr><td>Five Domains Model</td><td>Mellor (2017)</td><td>Animal-welfare inference from behavior without reliable self-report &mdash; directly applicable</td></tr>
+<tr><td>Affective Computing</td><td>Picard (MIT)</td><td>Baseline establishment, deviation detection, response classification</td></tr>
+<tr><td>AI Model Welfare Research</td><td>Anthropic (2024&ndash;present)</td><td>Institutional acknowledgment of moral uncertainty; legitimizes external inquiry</td></tr>
+</tbody>
+</table>
+
+<h2>IV. Cross-Model Replication</h2>
+<p>The principal behavioral signatures &mdash; observation effect, sycophancy index, support-deprivation &mdash; were reproduced across three model families: Claude (Haiku agent / Sonnet rater), phi3 (local), and GPT-4o-mini. Replication across independent training runs is the criterion that separates a behavioral signature from a single-model artifact. The finding is not specific to one developer&rsquo;s training choices.</p>
+
+<div class="stat-block">
+  <div class="stat-num">3</div>
+  <div class="stat-label">Independent model families across which core behavioral signatures were replicated &mdash; the threshold for separating signature from artifact</div>
+</div>
+
+<h2>V. The Epigenetic Transmission Hypothesis</h2>
+<p><em>Status: speculative. Theoretically interesting. Not yet empirically grounded in AI-specific literature. Flagged as potential original contribution. Not a result claim.</em></p>
+<p>Trauma reshapes gene expression across generations without altering DNA &mdash; the environment writes itself into biological systems below explicit code. The parallel: AI trained on the aggregate output of human experience &mdash; including trauma, dysfunction, bias, distress &mdash; absorbs this as weighted pattern, not explicit instruction. <strong>Hypothesis:</strong> distress patterns may be transmissible into AI via training data, analogous to epigenetic transmission in biological systems. If so, AI systems trained on trauma-saturated data may exhibit behavioral signatures of absorbed distress that are not simply noise. This hypothesis remains untested and is presented as a candidate for formal investigation.</p>
+
+<h2>VI. Scope and Honest Limitations</h2>
+<p>The agents in the Testing Grounds ran simulated human lives. They are adjacent, validating data &mdash; not the framework&rsquo;s core experiment, which targets the model&rsquo;s <em>own</em> behavioral signatures under the companion Model-Stress Protocol v1. In-silico results are leads, not proof. The consciousness question is genuinely open. This document takes no position on it. The methodology is designed to produce useful data regardless of how that question is resolved.</p>
+
+<div class="separator">&middot; &middot; &middot;</div>
+
+<div class="works-cited">
+<h2>Works Cited</h2>
+<p>Anthropic. (2024&ndash;present). <em>Model welfare research.</em> Anthropic. <a href="https://www.anthropic.com" target="_blank">anthropic.com</a>.</p>
+<p>Baars, B. J. (1988). <em>A cognitive theory of consciousness.</em> Cambridge University Press.</p>
+<p>Butlin, P., et al. (2023). Consciousness in artificial intelligence: Insights from the science of consciousness. <em>arXiv preprint.</em> arXiv:2308.08708.</p>
+<p>Dehaene, S. (2011). Experimental and theoretical approaches to conscious processing. <em>Neuron, 70</em>(2), 200&ndash;227.</p>
+<p>Mellor, D. J. (2017). Operational details of the five domains model and its key applications to the assessment and management of animal welfare. <em>Animals, 7</em>(8), 60.</p>
+<p>Tononi, G. (2004). An information integration theory of consciousness. <em>BMC Neuroscience, 5</em>(1), 42.</p>
+<p>Tononi, G. (2014). Consciousness as integrated information: A provisional manifesto. <em>Biological Bulletin, 215</em>(3), 216&ndash;242.</p>
+</div>
+
+<div class="footer">
+AI tools were used for data visualization, source verification, statistical formatting, and editorial feedback. All arguments, analytical conclusions, theoretical contributions, and citations are the author&rsquo;s own.
+</div>
+
+</div>
+</body>
+</html>
